@@ -1,5 +1,7 @@
 package com.teamsamuelsagar.coworkingspace.pojos;
 
+//import com.teamsamuelsagar.coworkingspace.pojos.ResourceType;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,15 +9,18 @@ public abstract class ResourceAbstract {
 
     @Getter
     @Setter
-    Protected long id;
+    protected long id;
+
     @Getter
     @Setter
-    Protected String TYPE; // Should this be an enum? I'll set up the enum class to be implemented later if we want
+    protected String TYPE; // ResourceType TYPE; --- Should this be an enum, ResourceType?
+
     @Getter
     @Setter
-    Protected int available;
+    protected int available;
+    
     @Getter
     @Setter
-    Protected double price;
+    protected double price;
 
 }
