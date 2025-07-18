@@ -2,18 +2,7 @@ package com.teamsamuelsagar.coworkingspace.pojos;
 
 //import com.teamsamuelsagar.coworkingspace.pojos.ResourceType;
 
-import lombok.Getter;
-import lombok.Setter;
-
 public class ResourceOther extends ResourceAbstract {
-
-    @Getter
-    @Setter
-    private String name;
-
-    @Getter
-    @Setter
-    private String description;
 
     public ResourceOther() {
         this.TYPE = "Other"; // ResourceType.Other;

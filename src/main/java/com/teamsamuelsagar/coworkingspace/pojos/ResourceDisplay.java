@@ -2,18 +2,7 @@ package com.teamsamuelsagar.coworkingspace.pojos;
 
 //import com.teamsamuelsagar.coworkingspace.pojos.ResourceType;
 
-import lombok.Getter;
-import lombok.Setter;
-
 public class ResourceDisplay extends ResourceAbstract {
-
-    @Getter
-    @Setter
-    private String name;
-
-    @Getter
-    @Setter
-    private String description;
 
     public ResourceDisplay() {
         this.TYPE = "Display"; // ResourceType.Display;

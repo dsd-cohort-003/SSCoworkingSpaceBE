@@ -17,8 +17,16 @@ public abstract class ResourceAbstract {
 
     @Getter
     @Setter
+    protected String name;
+
+    @Getter
+    @Setter
+    protected String description;
+
+    @Getter
+    @Setter
     protected int available;
-    
+
     @Getter
     @Setter
     protected double price;
