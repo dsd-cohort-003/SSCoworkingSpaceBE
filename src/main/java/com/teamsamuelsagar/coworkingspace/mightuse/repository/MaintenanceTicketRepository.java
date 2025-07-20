@@ -1,4 +1,4 @@
-package com.teamsamuelsagar.coworkingspace.repository;
+package com.teamsamuelsagar.coworkingspace.mightuse.repository;
 
 import org.springframework.stereotype.Repository;
 
