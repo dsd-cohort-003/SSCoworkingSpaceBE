@@ -1,4 +1,4 @@
-package com.teamsamuelsagar.coworkingspace.pojos;
+package com.teamsamuelsagar.coworkingspace.resource_entity;
 
 import lombok.Getter;
 import lombok.Setter;

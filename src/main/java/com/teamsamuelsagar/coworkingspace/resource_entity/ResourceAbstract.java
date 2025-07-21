@@ -1,10 +1,12 @@
-package com.teamsamuelsagar.coworkingspace.pojos;
+package com.teamsamuelsagar.coworkingspace.resource_entity;
 
-import com.teamsamuelsagar.coworkingspace.pojos.ResourceCategory;
-import com.teamsamuelsagar.coworkingspace.pojos.ResourceType;
+// import com.teamsamuelsagar.coworkingspace.pojos.ResourceCategory;
+// import com.teamsamuelsagar.coworkingspace.pojos.ResourceType;
 
 import lombok.Data;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.Table;
@@ -23,9 +25,11 @@ public abstract class ResourceAbstract {
     protected long id;
 
     @Column(name = "category")
+    @Enumerated(EnumType.STRING)
     protected ResourceCategory CATEGORY; // The Category the resource belongs to
 
     @Column(name = "type")
+    @Enumerated(EnumType.STRING)
     protected ResourceType TYPE; // The Type of resource
 
     @Column(name = "name")
