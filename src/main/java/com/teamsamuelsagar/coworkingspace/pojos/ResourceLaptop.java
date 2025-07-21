@@ -3,10 +3,11 @@ package com.teamsamuelsagar.coworkingspace.pojos;
 import lombok.Getter;
 import lombok.Setter;
 
-public class ResourceAudio extends ResourceAbstract {
+public class ResourceLaptop extends ResourceAbstract {
 
+    
     @Getter
     @Setter
-    private boolean isWireless;
+    private String osType;
 
 }

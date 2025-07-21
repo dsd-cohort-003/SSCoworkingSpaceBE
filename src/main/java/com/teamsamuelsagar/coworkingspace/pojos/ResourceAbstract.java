@@ -1,35 +1,44 @@
 package com.teamsamuelsagar.coworkingspace.pojos;
 
-//import com.teamsamuelsagar.coworkingspace.pojos.ResourceType;
+import com.teamsamuelsagar.coworkingspace.pojos.ResourceCategory;
+import com.teamsamuelsagar.coworkingspace.pojos.ResourceType;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.Column;
 
+@Data
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "resources")
 public abstract class ResourceAbstract {
 
-    @Getter
-    @Setter
+    @Id
+    @Column(name = "id")
     protected long id;
 
-    @Getter
-    @Setter
-    protected String TYPE; // ResourceType TYPE; --- Should this be an enum, ResourceType?
+    @Column(name = "category")
+    protected ResourceCategory CATEGORY; // The Category the resource belongs to
 
-    @Getter
-    @Setter
+    @Column(name = "type")
+    protected ResourceType TYPE; // The Type of resource
+
+    @Column(name = "name")
     protected String name;
 
-    @Getter
-    @Setter
-    protected String description;
-
-    @Getter
-    @Setter
+    @Column(name = "available")
     protected int available;
 
-    @Getter
-    @Setter
-    protected double price;
+    @Column(name = "price")
+    protected Float price;
+
+    @Column(name = "description")
+    protected String description; // The JSON description for the specific resource
 
     /**
      * Checks if the resource is available.
@@ -46,7 +55,8 @@ public abstract class ResourceAbstract {
      * The summary will be in the format of a JSON object, with the following fields:
      * <ul>
      *     <li>id: the unique identifier of the resource</li>
-     *     <li>TYPE: the type of the resource, e.g. "Display", "Audio", etc.</li>
+     *     <li>CATEGORY: the category of the resource, e.g. "Display", "Audio", etc.</li>
+     *     <li>TYPE: the type of the resource, e.g. "Monitor", "Microphone", etc.</li>
      *     <li>name: the name of the resource</li>
      *     <li>description: a brief description of the resource</li>
      *     <li>available: the number of resources available</li>
@@ -56,13 +66,14 @@ public abstract class ResourceAbstract {
      */
     public String getSummary() {
         return "Resource{\n" +
-                "id = " + id +
-                ", TYPE = '" + TYPE + '\'' +
-                ", name = '" + name + '\'' +
-                ", description = '" + description + '\'' +
-                ", available = " + available +
-                ", price = $" + price +
-                "\n}";
+                "    id=" + id + "\n" +
+                "    CATEGORY=" + CATEGORY + "\n" +
+                "    TYPE=" + TYPE + "\n" +
+                "    name='" + name + '\'' + "\n" +
+                "    available=" + available + "\n" +
+                "    price=" + price + "\n" +
+                "    description='" + description +
+                '}';
     }
 
     /**

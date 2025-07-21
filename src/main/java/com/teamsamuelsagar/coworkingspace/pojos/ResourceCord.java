@@ -3,18 +3,18 @@ package com.teamsamuelsagar.coworkingspace.pojos;
 import lombok.Getter;
 import lombok.Setter;
 
-public class ResourceDisplay extends ResourceAbstract {
+public class ResourceCord extends ResourceAbstract {
 
     @Getter
     @Setter
-    private String screenSize;
+    private String length;
 
     @Getter
     @Setter
-    private String resolution;
+    private String connectorType;
 
     @Getter
     @Setter
-    private boolean isPortable;
-
+    private boolean surgeProtected;
+    
 }
