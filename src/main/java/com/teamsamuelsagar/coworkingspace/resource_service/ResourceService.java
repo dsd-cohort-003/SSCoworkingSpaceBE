@@ -21,7 +21,7 @@ public class ResourceService {
     }
 
     public ResourceAbstract getResourceById(int id) {
-        return resourceRepository.findByID(id).orElse(null);
+        return resourceRepository.findById(id).orElse(null);
     }
 
     public List<ResourceAbstract> getResourcesByCategory(ResourceCategory category) {

@@ -16,7 +16,7 @@ public interface ResourceRepository extends JpaRepository<ResourceAbstract, Inte
     @NonNull
     List<ResourceAbstract> findAll();
 
-    Optional<ResourceAbstract> findByID(int id);
+    Optional<ResourceAbstract> findById(int id);
 
     List<ResourceAbstract> findByCategory(ResourceCategory category);
 

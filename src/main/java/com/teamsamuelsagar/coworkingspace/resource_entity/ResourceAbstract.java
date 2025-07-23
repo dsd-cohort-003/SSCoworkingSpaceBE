@@ -1,8 +1,5 @@
 package com.teamsamuelsagar.coworkingspace.resource_entity;
 
-// import com.teamsamuelsagar.coworkingspace.pojos.ResourceCategory;
-// import com.teamsamuelsagar.coworkingspace.pojos.ResourceType;
-
 import lombok.Data;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -11,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
 import jakarta.persistence.Column;
 
 @Data
@@ -18,6 +16,7 @@ import jakarta.persistence.Column;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "resources")
+@Inheritance(strategy = jakarta.persistence.InheritanceType.JOINED)
 public abstract class ResourceAbstract {
 
     @Id
@@ -26,11 +25,11 @@ public abstract class ResourceAbstract {
 
     @Column(name = "category")
     @Enumerated(EnumType.STRING)
-    protected ResourceCategory CATEGORY; // The Category the resource belongs to
+    protected ResourceCategory category; // The Category the resource belongs to
 
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
-    protected ResourceType TYPE; // The Type of resource
+    protected ResourceType type; // The Type of resource
 
     @Column(name = "name")
     protected String name;
@@ -71,8 +70,8 @@ public abstract class ResourceAbstract {
     public String getSummary() {
         return "Resource{\n" +
                 "    id=" + id + "\n" +
-                "    CATEGORY=" + CATEGORY + "\n" +
-                "    TYPE=" + TYPE + "\n" +
+                "    CATEGORY=" + category + "\n" +
+                "    TYPE=" + type + "\n" +
                 "    name='" + name + '\'' + "\n" +
                 "    available=" + available + "\n" +
                 "    price=" + price + "\n" +
