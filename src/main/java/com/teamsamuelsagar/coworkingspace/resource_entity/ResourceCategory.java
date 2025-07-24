@@ -2,10 +2,10 @@ package com.teamsamuelsagar.coworkingspace.resource_entity;
 
 public enum ResourceCategory {
 
-    Display, 
-    Audio, 
-    Video, 
-    InteractiveDevice,
-    Other
+    DISPLAY, 
+    AUDIO, 
+    VIDEO, 
+    INTERACTIVE_DEVICE,
+    OTHER
 
 }

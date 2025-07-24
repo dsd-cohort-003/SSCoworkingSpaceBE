@@ -8,7 +8,6 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
 import jakarta.persistence.Column;
 
 @Data
@@ -16,8 +15,7 @@ import jakarta.persistence.Column;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "resources")
-@Inheritance(strategy = jakarta.persistence.InheritanceType.JOINED)
-public abstract class ResourceAbstract {
+public class ResourceEntity {
 
     @Id
     @Column(name = "id")
@@ -25,11 +23,11 @@ public abstract class ResourceAbstract {
 
     @Column(name = "category")
     @Enumerated(EnumType.STRING)
-    protected ResourceCategory category; // The Category the resource belongs to
+    protected ResourceCategory CATEGORY; // The Category the resource belongs to
 
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
-    protected ResourceType type; // The Type of resource
+    protected ResourceType TYPE; // The Type of resource
 
     @Column(name = "name")
     protected String name;
@@ -70,8 +68,8 @@ public abstract class ResourceAbstract {
     public String getSummary() {
         return "Resource{\n" +
                 "    id=" + id + "\n" +
-                "    CATEGORY=" + category + "\n" +
-                "    TYPE=" + type + "\n" +
+                "    CATEGORY=" + CATEGORY + "\n" +
+                "    TYPE=" + TYPE + "\n" +
                 "    name='" + name + '\'' + "\n" +
                 "    available=" + available + "\n" +
                 "    price=" + price + "\n" +
@@ -85,7 +83,7 @@ public abstract class ResourceAbstract {
      * @param resource the resource to compare with this resource
      * @return true if the IDs of both resources are equal, false otherwise
      */
-    public boolean equals(ResourceAbstract resource) {
+    public boolean equals(ResourceEntity resource) {
         return this.id == resource.getId();
     }
 
