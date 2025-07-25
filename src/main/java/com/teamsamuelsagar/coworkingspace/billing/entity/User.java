@@ -1,12 +1,12 @@
 package com.teamsamuelsagar.coworkingspace.billing.entity;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,24 +16,20 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "billing")
-public class Billing {
+@Table(name = "users")
+public class User {
+
     @Id
-    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "reservation_id", nullable = false)
-    private OfficeReservation reservation;
+    private String username;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private String email;
 
-    @Column
-    private Float total;
+    private String role;
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
     
-    @Column(name="is_paid")
-    private Boolean isPaid;
 }
