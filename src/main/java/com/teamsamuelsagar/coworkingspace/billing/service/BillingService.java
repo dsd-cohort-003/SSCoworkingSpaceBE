@@ -33,6 +33,11 @@ public class BillingService {
         return billingRepository.save(bill);
     }
 
+    public Billing getBillingById(Long id) {
+        return billingRepository.findById(id)
+            .orElseThrow(() -> new IllegalArgumentException("Billing ID not found"));
+    }
+
     public List<Billing> getBillingByUserId(Long userId) {
         User user = userService.getUserById(userId); // delegate responsibility
         return billingRepository.findByUser(user);

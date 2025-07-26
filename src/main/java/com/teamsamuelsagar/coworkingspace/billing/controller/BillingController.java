@@ -82,6 +82,11 @@ public class BillingController {
         return ResponseEntity.ok(billingService.getAllBills());
     }
 
+    @GetMapping("/{billingId}")
+    public ResponseEntity<Billing> getBillingById(@PathVariable Long billingId) {
+        return ResponseEntity.ok(billingService.getBillingById(billingId));
+    }
+
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<Billing>> getBillingByUser(@PathVariable Long userId) {
         return ResponseEntity.ok(billingService.getBillingByUserId(userId));
