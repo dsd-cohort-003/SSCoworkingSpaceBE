@@ -20,7 +20,7 @@ public class MaintenanceTicketService {
         return maintenanceTicketRepository.findAll();
     }
 
-    public Optional getTicketById(Long id) {
+    public Optional<MaintenanceTicket> getTicketById(Long id) {
         return maintenanceTicketRepository.findById(id);
     }
 }
