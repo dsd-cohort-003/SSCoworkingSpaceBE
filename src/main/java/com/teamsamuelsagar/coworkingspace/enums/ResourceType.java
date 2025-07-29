@@ -1,4 +1,4 @@
-package com.teamsamuelsagar.coworkingspace.resource_entity;
+package com.teamsamuelsagar.coworkingspace.enums;
 
 public enum ResourceType {
 

@@ -1,9 +1,9 @@
-package com.teamsamuelsagar.coworkingspace.resource_service;
+package com.teamsamuelsagar.coworkingspace.service;
 
-import com.teamsamuelsagar.coworkingspace.resource_repository.ResourceRepository;
-import com.teamsamuelsagar.coworkingspace.resource_entity.ResourceEntity;
-import com.teamsamuelsagar.coworkingspace.resource_entity.ResourceCategory;
-import com.teamsamuelsagar.coworkingspace.resource_entity.ResourceType;
+import com.teamsamuelsagar.coworkingspace.enums.ResourceCategory;
+import com.teamsamuelsagar.coworkingspace.models.ResourceEntity;
+import com.teamsamuelsagar.coworkingspace.enums.ResourceType;
+import com.teamsamuelsagar.coworkingspace.repository.ResourceRepository;
 
 import java.util.List;
 
