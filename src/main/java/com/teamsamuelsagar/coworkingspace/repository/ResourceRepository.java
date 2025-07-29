@@ -1,8 +1,4 @@
-package com.teamsamuelsagar.coworkingspace.resource_repository;
-
-import com.teamsamuelsagar.coworkingspace.resource_entity.ResourceEntity;
-import com.teamsamuelsagar.coworkingspace.resource_entity.ResourceCategory;
-import com.teamsamuelsagar.coworkingspace.resource_entity.ResourceType;
+package com.teamsamuelsagar.coworkingspace.repository;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,6 +6,10 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
+
+import com.teamsamuelsagar.coworkingspace.entity.ResourceCategory;
+import com.teamsamuelsagar.coworkingspace.entity.ResourceEntity;
+import com.teamsamuelsagar.coworkingspace.entity.ResourceType;
 
 @Repository
 public interface ResourceRepository extends JpaRepository<ResourceEntity, Integer> {

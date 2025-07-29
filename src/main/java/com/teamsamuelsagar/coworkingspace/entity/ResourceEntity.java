@@ -1,4 +1,4 @@
-package com.teamsamuelsagar.coworkingspace.resource_entity;
+package com.teamsamuelsagar.coworkingspace.entity;
 
 import lombok.Data;
 import jakarta.persistence.Entity;
@@ -23,11 +23,11 @@ public class ResourceEntity {
 
     @Column(name = "category")
     @Enumerated(EnumType.STRING)
-    protected ResourceCategory CATEGORY; // The Category the resource belongs to
+    protected ResourceCategory category; // The Category the resource belongs to
 
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
-    protected ResourceType TYPE; // The Type of resource
+    protected ResourceType type; // The Type of resource
 
     @Column(name = "name")
     protected String name;
@@ -68,8 +68,8 @@ public class ResourceEntity {
     public String getSummary() {
         return "Resource{\n" +
                 "    id=" + id + "\n" +
-                "    CATEGORY=" + CATEGORY + "\n" +
-                "    TYPE=" + TYPE + "\n" +
+                "    CATEGORY=" + category + "\n" +
+                "    TYPE=" + type + "\n" +
                 "    name='" + name + '\'' + "\n" +
                 "    available=" + available + "\n" +
                 "    price=" + price + "\n" +
