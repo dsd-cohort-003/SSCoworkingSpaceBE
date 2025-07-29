@@ -1,5 +1,8 @@
-package com.teamsamuelsagar.coworkingspace.entity;
+package com.teamsamuelsagar.coworkingspace.model;
 
+import java.time.LocalDateTime;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,17 +16,20 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "office")
-public class Office {
-    
+@Table(name = "users")
+public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String username;
 
-    private Double price;
+    private String email;
 
-    private Double size;
+    private String role;
 
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+    
 }

@@ -5,9 +5,9 @@ import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Service;
 
-import com.teamsamuelsagar.coworkingspace.entity.Billing;
-import com.teamsamuelsagar.coworkingspace.entity.OfficeReservation;
-import com.teamsamuelsagar.coworkingspace.entity.User;
+import com.teamsamuelsagar.coworkingspace.model.Billing;
+import com.teamsamuelsagar.coworkingspace.model.OfficeReservation;
+import com.teamsamuelsagar.coworkingspace.model.User;
 import com.teamsamuelsagar.coworkingspace.repository.BillingRepository;
 
 import java.time.Duration;

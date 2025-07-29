@@ -1,4 +1,4 @@
-package com.teamsamuelsagar.coworkingspace.entity;
+package com.teamsamuelsagar.coworkingspace.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

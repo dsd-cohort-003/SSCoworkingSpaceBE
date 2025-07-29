@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.teamsamuelsagar.coworkingspace.entity.Billing;
-import com.teamsamuelsagar.coworkingspace.entity.User;
+import com.teamsamuelsagar.coworkingspace.model.Billing;
+import com.teamsamuelsagar.coworkingspace.model.User;
 
 @Repository
 public interface BillingRepository extends JpaRepository<Billing, Long> {

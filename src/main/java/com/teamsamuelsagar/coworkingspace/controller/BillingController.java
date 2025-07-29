@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.teamsamuelsagar.coworkingspace.entity.Billing;
+import com.teamsamuelsagar.coworkingspace.model.Billing;
 import com.teamsamuelsagar.coworkingspace.service.BillingService;
 
 import java.util.List;
