@@ -1,4 +1,4 @@
-package com.teamsamuelsagar.coworkingspace.entity;
+package com.teamsamuelsagar.coworkingspace.models;
 
 import lombok.Data;
 import jakarta.persistence.Entity;
@@ -14,16 +14,19 @@ import jakarta.persistence.Column;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "resources")
+@Table(name = "resource")
 public class ResourceEntity {
 
     @Id
     @Column(name = "id")
     protected long id;
 
+    @Column(name = "office_id")
+    protected long officeId;
+
     @Column(name = "category")
     @Enumerated(EnumType.STRING)
-    protected ResourceCategory category; // The Category the resource belongs to
+    protected ResourceCategory category;
 
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
@@ -32,23 +35,11 @@ public class ResourceEntity {
     @Column(name = "name")
     protected String name;
 
-    @Column(name = "available")
-    protected int available;
-
     @Column(name = "price")
     protected Float price;
 
     @Column(name = "description")
     protected String description; // The JSON description for the specific resource
-
-    /**
-     * Checks if the resource is available.
-     * 
-     * @return true if the resource is available (i.e., the quantity is greater than zero), false otherwise.
-     */
-    public boolean isAvailable() {
-        return available > 0;
-    }
 
     /**
      * Returns a summary of the resource, useful for logging or displaying information.
@@ -68,10 +59,9 @@ public class ResourceEntity {
     public String getSummary() {
         return "Resource{\n" +
                 "    id=" + id + "\n" +
-                "    CATEGORY=" + category + "\n" +
+                "    officeId=" + officeId + "\n" +
                 "    TYPE=" + type + "\n" +
                 "    name='" + name + '\'' + "\n" +
-                "    available=" + available + "\n" +
                 "    price=" + price + "\n" +
                 "    description='" + description +
                 '}';
@@ -85,52 +75,6 @@ public class ResourceEntity {
      */
     public boolean equals(ResourceEntity resource) {
         return this.id == resource.getId();
-    }
-
-    /**
-     * Attempts to reserve one resource, if available.
-     * <p>
-     * If there is at least one resource available, this method will decrement the available count by one and return true.
-     * Otherwise, it will return false.
-     * </p>
-     * @return true if the resource was reserved, false if not
-     */
-    public boolean reserveOne() {
-        if (available > 0) {
-            available--;
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Attempts to reserve multiple resources, if available.
-     * <p>
-     * If there are at least <code>quantity</code> resources available, this method will decrement the available count by <code>quantity</code> and return true.
-     * Otherwise, it will return false.
-     * </p>
-     * @param quantity the number of resources to reserve
-     * @return true if the resources were reserved, false if not
-     */
-    public boolean reserve(int quantity) {
-        if (available >= quantity) {
-            available -= quantity;
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Attempts to return one resource, if not already fully reserved.
-     * <p>
-     * If there are available resources, this method will increment the available count by one and return true.
-     * Otherwise, it will return false.
-     * </p>
-     * @return true if the resource was returned, false if not
-     */
-    public boolean returnOne() {
-        available++;
-        return true;
     }
 
 }
