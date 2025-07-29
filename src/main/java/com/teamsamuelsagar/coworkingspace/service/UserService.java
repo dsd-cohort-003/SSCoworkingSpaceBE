@@ -1,9 +1,9 @@
-package com.teamsamuelsagar.coworkingspace.billing.service;
+package com.teamsamuelsagar.coworkingspace.service;
 
 import org.springframework.stereotype.Service;
 
-import com.teamsamuelsagar.coworkingspace.billing.entity.User;
-import com.teamsamuelsagar.coworkingspace.billing.repository.UserRepository;
+import com.teamsamuelsagar.coworkingspace.entity.User;
+import com.teamsamuelsagar.coworkingspace.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 

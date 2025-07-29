@@ -1,9 +1,9 @@
-package com.teamsamuelsagar.coworkingspace.billing.service;
+package com.teamsamuelsagar.coworkingspace.service;
 
 import org.springframework.stereotype.Service;
 
-import com.teamsamuelsagar.coworkingspace.billing.entity.OfficeReservation;
-import com.teamsamuelsagar.coworkingspace.billing.repository.OfficeReservationRepository;
+import com.teamsamuelsagar.coworkingspace.entity.OfficeReservation;
+import com.teamsamuelsagar.coworkingspace.repository.OfficeReservationRepository;
 
 import lombok.RequiredArgsConstructor;
 

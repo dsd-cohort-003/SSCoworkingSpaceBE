@@ -1,14 +1,14 @@
-package com.teamsamuelsagar.coworkingspace.billing.service;
-
-import com.teamsamuelsagar.coworkingspace.billing.entity.Billing;
-import com.teamsamuelsagar.coworkingspace.billing.entity.OfficeReservation;
-import com.teamsamuelsagar.coworkingspace.billing.entity.User;
-import com.teamsamuelsagar.coworkingspace.billing.repository.BillingRepository;
+package com.teamsamuelsagar.coworkingspace.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Service;
+
+import com.teamsamuelsagar.coworkingspace.entity.Billing;
+import com.teamsamuelsagar.coworkingspace.entity.OfficeReservation;
+import com.teamsamuelsagar.coworkingspace.entity.User;
+import com.teamsamuelsagar.coworkingspace.repository.BillingRepository;
 
 import java.time.Duration;
 import java.util.List;
