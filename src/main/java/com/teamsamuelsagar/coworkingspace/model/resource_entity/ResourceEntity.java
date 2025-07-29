@@ -1,4 +1,4 @@
-package com.teamsamuelsagar.coworkingspace.resource_entity;
+package com.teamsamuelsagar.coworkingspace.model.resource_entity;
 
 import lombok.Data;
 import jakarta.persistence.Entity;
