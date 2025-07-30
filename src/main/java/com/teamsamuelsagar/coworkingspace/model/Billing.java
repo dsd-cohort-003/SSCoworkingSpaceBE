@@ -25,7 +25,7 @@ public class Billing {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "reservation_id", nullable = false)
-    private OfficeReservation reservation;
+    private Reservation reservation;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id", nullable = false)
