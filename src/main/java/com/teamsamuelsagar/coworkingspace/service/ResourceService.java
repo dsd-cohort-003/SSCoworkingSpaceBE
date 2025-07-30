@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.teamsamuelsagar.coworkingspace.model.resource_entity.ResourceCategory;
-import com.teamsamuelsagar.coworkingspace.model.resource_entity.Resource;
-import com.teamsamuelsagar.coworkingspace.model.resource_entity.ResourceType;
+import com.teamsamuelsagar.coworkingspace.model.Resource;
+import com.teamsamuelsagar.coworkingspace.model.enumtype.ResourceCategory;
+import com.teamsamuelsagar.coworkingspace.model.enumtype.ResourceType;
 import com.teamsamuelsagar.coworkingspace.repository.ResourceRepository;
 
 @Service

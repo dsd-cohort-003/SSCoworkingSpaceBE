@@ -2,8 +2,6 @@ package com.teamsamuelsagar.coworkingspace.model;
 
 import java.time.LocalDate;
 
-import com.teamsamuelsagar.coworkingspace.model.resource_entity.Resource;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

@@ -1,4 +1,4 @@
-package com.teamsamuelsagar.coworkingspace.model.resource_entity;
+package com.teamsamuelsagar.coworkingspace.model;
 
 import lombok.Data;
 import jakarta.persistence.Entity;
@@ -8,6 +8,10 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
+
+import com.teamsamuelsagar.coworkingspace.model.enumtype.ResourceCategory;
+import com.teamsamuelsagar.coworkingspace.model.enumtype.ResourceType;
+
 import jakarta.persistence.Column;
 
 @Data
