@@ -14,8 +14,8 @@ import jakarta.persistence.Column;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "resources")
-public class ResourceEntity {
+@Table(name = "resource")
+public class Resource {
 
     @Id
     @Column(name = "id")
@@ -83,7 +83,7 @@ public class ResourceEntity {
      * @param resource the resource to compare with this resource
      * @return true if the IDs of both resources are equal, false otherwise
      */
-    public boolean equals(ResourceEntity resource) {
+    public boolean equals(Resource resource) {
         return this.id == resource.getId();
     }
 
