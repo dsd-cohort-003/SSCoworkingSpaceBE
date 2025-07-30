@@ -1,8 +1,5 @@
-package com.teamsamuelsagar.coworkingspace.controller;
+package com.teamsamuelsagar.coworkingspace.model.resource_entity;
 
-import com.teamsamuelsagar.coworkingspace.model.resource_entity.ResourceCategory;
-import com.teamsamuelsagar.coworkingspace.model.resource_entity.ResourceEntity;
-import com.teamsamuelsagar.coworkingspace.model.resource_entity.ResourceType;
 import com.teamsamuelsagar.coworkingspace.service.ResourceService;
 
 import java.util.List;
