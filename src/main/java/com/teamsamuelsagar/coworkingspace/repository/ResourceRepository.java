@@ -21,5 +21,4 @@ public interface ResourceRepository extends JpaRepository<Resource, Integer> {
     List<Resource> findByCategory(ResourceCategory category);
 
     List<Resource> findByType(ResourceType type);
-
 }
