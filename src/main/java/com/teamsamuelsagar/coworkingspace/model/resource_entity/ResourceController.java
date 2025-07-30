@@ -1,7 +1,5 @@
 package com.teamsamuelsagar.coworkingspace.model.resource_entity;
 
-import com.teamsamuelsagar.coworkingspace.service.ResourceService;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,14 +24,14 @@ public class ResourceController {
         return resourceService.getResourceById(id);
     }
 
-    // @GetMapping("/category/{category}")
-    // public List<ResourceEntity> getResourcesByCategory(ResourceCategory category) {
-    //     return resourceService.getResourcesByCategory(category);
-    // }
+    @GetMapping("/category/{category}")
+    public List<ResourceEntity> getResourcesByCategory(ResourceCategory category) {
+        return resourceService.getResourcesByCategory(category);
+    }
 
-    // @GetMapping("/type/{type}")
-    // public List<ResourceEntity> getResourcesByType(ResourceType type) {
-    //     return resourceService.getResourcesByType(type);
-    // }
+    @GetMapping("/type/{type}")
+    public List<ResourceEntity> getResourcesByType(ResourceType type) {
+        return resourceService.getResourcesByType(type);
+    }
 
 }
