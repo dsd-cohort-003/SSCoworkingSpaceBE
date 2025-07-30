@@ -66,5 +66,6 @@ The password should be given to you by a member of the cohort team. Just ask one
 
  ### 5. PR Standards
  Include Type of change, Short Description, and Jira Ticket number in the title. In the description include a summary of the change, testing evidence
+ 
  EG: Feature: Add retrieve office endpoint SCRUM-34 
  
