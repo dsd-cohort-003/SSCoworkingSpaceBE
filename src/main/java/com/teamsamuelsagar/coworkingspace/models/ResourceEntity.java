@@ -8,6 +8,10 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
+
+import com.teamsamuelsagar.coworkingspace.enums.ResourceCategory;
+import com.teamsamuelsagar.coworkingspace.enums.ResourceType;
+
 import jakarta.persistence.Column;
 
 @Data
