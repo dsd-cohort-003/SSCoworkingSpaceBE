@@ -1,5 +1,7 @@
 package com.teamsamuelsagar.coworkingspace.models;
 
+import com.teamsamuelsagar.coworkingspace.enums.ResourceCategory;
+import com.teamsamuelsagar.coworkingspace.enums.ResourceType;
 import lombok.Data;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
