@@ -22,6 +22,10 @@ public class OfficeService {
         return officeRepository.findAll();
     }
 
+    public Office getOfficeById(long officeId) {
+        return officeRepository.findById(officeId).orElseThrow(EntityNotFoundException::new);
+    }
+
     public Office createOffice(Office office) {
         return officeRepository.save(office);
     }

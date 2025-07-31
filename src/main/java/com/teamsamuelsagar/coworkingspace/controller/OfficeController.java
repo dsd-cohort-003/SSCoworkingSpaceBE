@@ -28,6 +28,12 @@ public class OfficeController {
     @GetMapping(value = "/offices")
     public ResponseEntity<List<Office>> getAllOffices() {
         return ResponseEntity.ok(officeService.getAllOffices());
+        
+    }
+
+    @GetMapping(value = "/offices/{officeId}")
+    public ResponseEntity<Office> getOfficeById(@PathVariable long officeId) {
+        return ResponseEntity.ok(officeService.getOfficeById(officeId));
     }
 
 
