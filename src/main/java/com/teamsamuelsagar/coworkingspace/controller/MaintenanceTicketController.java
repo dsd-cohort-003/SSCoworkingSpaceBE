@@ -1,17 +1,20 @@
-package com.teamsamuelsagar.coworkingspace.maintenance.controller;
+package com.teamsamuelsagar.coworkingspace.controller;
 
-import com.teamsamuelsagar.coworkingspace.maintenance.entity.MaintenanceTicket;
-import com.teamsamuelsagar.coworkingspace.maintenance.service.MaintenanceTicketService;
+import com.teamsamuelsagar.coworkingspace.model.MaintenanceTicket;
+import com.teamsamuelsagar.coworkingspace.service.MaintenanceTicketService;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
+@RequestMapping("/api/maintenance")
 public class MaintenanceTicketController {
 
     private final MaintenanceTicketService maintenanceTicketService;
@@ -20,7 +23,7 @@ public class MaintenanceTicketController {
         this.maintenanceTicketService = maintenanceTicketService;
     }
 
-    @GetMapping("/maintenance")
+    @GetMapping
     public ResponseEntity<List<MaintenanceTicket>> getAllTickets() {
 
         List<MaintenanceTicket> maintenanceTickets = maintenanceTicketService.getAllTickets();
@@ -31,13 +34,8 @@ public class MaintenanceTicketController {
     }
 
     @GetMapping("/maintenance/{ticket_id}")
-    public ResponseEntity<Optional<MaintenanceTicket>> getTicketById(@PathVariable String ticket_id) {
-        Optional<MaintenanceTicket> ticket = maintenanceTicketService.getTicketById(Long.parseLong(ticket_id));
-
-        if(ticket.isPresent()) {
-            return ResponseEntity.ok(ticket);
-        }
-
-        return ResponseEntity.badRequest().build();
+    public ResponseEntity<MaintenanceTicket> getTicketById(@PathVariable String ticket_id) {
+        MaintenanceTicket ticket = maintenanceTicketService.getTicketById(Long.parseLong(ticket_id));
+        return ResponseEntity.ok(ticket);
     }
 }

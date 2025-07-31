@@ -1,8 +1,9 @@
-package com.teamsamuelsagar.coworkingspace.maintenance.repository;
+package com.teamsamuelsagar.coworkingspace.repository;
 
-import com.teamsamuelsagar.coworkingspace.maintenance.entity.MaintenanceTicket;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.teamsamuelsagar.coworkingspace.model.MaintenanceTicket;
 
 @Repository
 public interface MaintenanceTicketRepository extends JpaRepository<MaintenanceTicket, Long> {

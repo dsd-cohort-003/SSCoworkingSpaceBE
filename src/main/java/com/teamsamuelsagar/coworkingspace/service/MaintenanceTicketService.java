@@ -1,11 +1,11 @@
-package com.teamsamuelsagar.coworkingspace.maintenance.service;
+package com.teamsamuelsagar.coworkingspace.service;
 
-import com.teamsamuelsagar.coworkingspace.maintenance.entity.MaintenanceTicket;
-import com.teamsamuelsagar.coworkingspace.maintenance.repository.MaintenanceTicketRepository;
+import com.teamsamuelsagar.coworkingspace.model.MaintenanceTicket;
+import com.teamsamuelsagar.coworkingspace.repository.MaintenanceTicketRepository;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class MaintenanceTicketService {
@@ -20,7 +20,8 @@ public class MaintenanceTicketService {
         return maintenanceTicketRepository.findAll();
     }
 
-    public Optional getTicketById(Long id) {
-        return maintenanceTicketRepository.findById(id);
+    public MaintenanceTicket getTicketById(Long id) {
+        return maintenanceTicketRepository.findById(id)
+            .orElseThrow(() -> new IllegalArgumentException("Ticket ID not found"));
     }
 }

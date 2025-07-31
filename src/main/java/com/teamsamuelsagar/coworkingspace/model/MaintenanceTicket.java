@@ -1,5 +1,6 @@
 package com.teamsamuelsagar.coworkingspace.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,7 +15,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "maintenance_tickets")
+@Table(name = "maintenance_ticket")
 public class MaintenanceTicket {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,6 +23,9 @@ public class MaintenanceTicket {
 
     @ManyToOne
     private User user;
+
+    @Column(name = "progress")
+    private String ticketProgress;
 
     private String status;
     private String category;
