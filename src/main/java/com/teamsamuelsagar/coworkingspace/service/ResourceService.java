@@ -23,44 +23,47 @@ public class ResourceService {
     @Autowired
     private ResourceRepository resourceRepository;
 
-    public ResourceDTO getResourceById(long officeId, long id) {
-            return toDTO(resourceRepository.findByIdAndOfficeId(id, officeId));
+    @Autowired
+    private ResourceReservationService resourceReservationService;
+
+    public ResourceDTO getResourceById(long officeId, String startDate, String endDate, long id) {
+            return toDTO(resourceRepository.findByIdAndOfficeId(id, officeId), startDate, endDate);
     }
 
-    public List<ResourceDTO> getAllByCategory(long officeId, ResourceCategory category) {
+    public List<ResourceDTO> getAllByCategory(long officeId, String startDate, String endDate, ResourceCategory category) {
         return resourceRepository.findByCategoryAndOfficeId(category, officeId)
             .stream()
-            .map(resource -> toDTO(resource))
+            .map(resource -> toDTO(resource, startDate, endDate))
             .collect(Collectors.toList());
     }
 
-    public List<ResourceDTO> getResourcesByType(long officeId, ResourceType type) {
+    public List<ResourceDTO> getResourcesByType(long officeId, String startDate, String endDate, ResourceType type) {
         return resourceRepository.findByTypeAndOfficeId(type, officeId)
             .stream()
-            .map(resource -> toDTO(resource))
+            .map(resource -> toDTO(resource, startDate, endDate))
             .collect(Collectors.toList());
     }
 
-    public List<ResourceDTO> getResourcesByOfficeId(long officeId) {
+    public List<ResourceDTO> getResourcesByOfficeId(long officeId, String startDate, String endDate) {
         return resourceRepository.findByOfficeId(officeId)
             .stream()
-            .map(resource -> toDTO(resource))
+            .map(resource -> toDTO(resource, startDate, endDate))
             .collect(Collectors.toList());
     }
 
-    private ResourceDTO toDTO(Resource entity) {
+    private ResourceDTO toDTO(Resource entity, String startDate, String endDate) {
         ResourceDTO dto = new ResourceDTO();
         dto.setId(entity.getId());
         dto.setName(entity.getName());
         dto.setDescription(entity.getDescription());
         dto.setType(entity.getType());
         dto.setCategory(entity.getCategory());
-        dto.setReserved(resourceReserved(entity));
+        dto.setReserved(resourceReserved(entity, startDate, endDate));
         return dto;
     }
 
-    private boolean resourceReserved(Resource entity) {
-        return false; // Stub until ResourceReservation is implemented
+    private boolean resourceReserved(Resource entity, String startDate, String endDate) {
+        return resourceReservationService.getReservationByResourceId(entity.getId(), startDate, endDate).isEmpty();
     }
 
 }
