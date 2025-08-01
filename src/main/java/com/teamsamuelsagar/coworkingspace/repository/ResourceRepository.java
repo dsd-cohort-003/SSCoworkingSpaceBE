@@ -7,19 +7,18 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 
-import com.teamsamuelsagar.coworkingspace.enums.ResourceCategory;
-import com.teamsamuelsagar.coworkingspace.models.ResourceEntity;
-import com.teamsamuelsagar.coworkingspace.enums.ResourceType;
+import com.teamsamuelsagar.coworkingspace.model.Resource;
+import com.teamsamuelsagar.coworkingspace.model.enumtype.ResourceCategory;
+import com.teamsamuelsagar.coworkingspace.model.enumtype.ResourceType;
 
 @Repository
-public interface ResourceRepository extends JpaRepository<ResourceEntity, Integer> {
+public interface ResourceRepository extends JpaRepository<Resource, Integer> {
     @NonNull
-    List<ResourceEntity> findAll();
+    List<Resource> findAll();
 
-    Optional<ResourceEntity> findById(int id);
+    Optional<Resource> findById(int id);
 
-    List<ResourceEntity> findByCategory(ResourceCategory category);
+    List<Resource> findByCategory(ResourceCategory category);
 
-    List<ResourceEntity> findByType(ResourceType type);
-
+    List<Resource> findByType(ResourceType type);
 }

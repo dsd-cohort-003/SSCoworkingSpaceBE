@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import com.teamsamuelsagar.coworkingspace.model.Billing;
-import com.teamsamuelsagar.coworkingspace.model.OfficeReservation;
 import com.teamsamuelsagar.coworkingspace.model.User;
 import com.teamsamuelsagar.coworkingspace.repository.BillingRepository;
 
@@ -19,7 +18,7 @@ import java.util.Optional;
 public class BillingService {
     private final BillingRepository billingRepository;
     private final UserService userService;
-    private final OfficeReservationService reservationService;
+    // private final OfficeReservationService reservationService;
 
     public List<Billing> getAllBills() {
         return billingRepository.findAll();

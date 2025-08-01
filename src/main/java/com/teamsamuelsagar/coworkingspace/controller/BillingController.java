@@ -51,10 +51,10 @@ public class BillingController {
         return ResponseEntity.ok(billingService.confirmPayment(billingId));
     }
 
-    // @PostMapping("/generate/{reservationId}")
-    // public ResponseEntity<Billing> generateBill(@PathVariable Long reservationId) {
-    //     return ResponseEntity.ok(billingService.generateBill(reservationId));
-    // }
+//     @PostMapping("/generate/{reservationId}")
+//     public ResponseEntity<Billing> generateBill(@PathVariable Long reservationId) {
+//         return ResponseEntity.ok(billingService.generateBill(reservationId));
+//     }
 }
 
 
