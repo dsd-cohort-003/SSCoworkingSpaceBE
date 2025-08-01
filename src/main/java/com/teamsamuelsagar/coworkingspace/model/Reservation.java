@@ -1,7 +1,8 @@
 package com.teamsamuelsagar.coworkingspace.model;
 
 
-import com.teamsamuelsagar.coworkingspace.enums.ReservationStatus;
+
+import com.teamsamuelsagar.coworkingspace.model.enumtype.ReservationStatus;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
