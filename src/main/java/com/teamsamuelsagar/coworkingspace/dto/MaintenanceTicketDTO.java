@@ -29,6 +29,8 @@ public class MaintenanceTicketDTO {
         ticket.setLocation(this.location);
         ticket.setDescription(this.description);
         ticket.setStatus(this.status);
+        ticket.setImage(image);
+        ticket.setAssignees(assignees);
         ticket.setUser(user); // passed explicitly to prevent leaking domain logic into DTO
         return ticket;
     }
