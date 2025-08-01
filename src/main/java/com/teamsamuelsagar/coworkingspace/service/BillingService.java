@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import com.teamsamuelsagar.coworkingspace.model.Billing;
-import com.teamsamuelsagar.coworkingspace.model.OfficeReservation;
 import com.teamsamuelsagar.coworkingspace.model.User;
 import com.teamsamuelsagar.coworkingspace.repository.BillingRepository;
 
@@ -19,7 +18,7 @@ import java.util.Optional;
 public class BillingService {
     private final BillingRepository billingRepository;
     private final UserService userService;
-    private final OfficeReservationService reservationService;
+    // private final OfficeReservationService reservationService;
 
     public List<Billing> getAllBills() {
         return billingRepository.findAll();
@@ -63,17 +62,17 @@ public class BillingService {
         return billingRepository.save(bill);
     }
 
-    public Billing generateBill(Long reservationId) {
-        OfficeReservation reservation = reservationService.getReservationById(reservationId);
-        double hours = Duration.between(reservation.getStartDate(), reservation.getEndDate()).toHours();
-        double rate = reservation.getOffice().getPrice();
+    // public Billing generateBill(Long reservationId) {
+    //     OfficeReservation reservation = reservationService.getReservationById(reservationId);
+    //     double hours = Duration.between(reservation.getStartDate(), reservation.getEndDate()).toHours();
+    //     double rate = reservation.getOffice().getPrice();
 
-        Billing bill = new Billing();
-        bill.setReservation(reservation);
-        bill.setUser(reservation.getUser());
-        bill.setTotal((float) (rate * hours));
-        bill.setIsPaid(false);
+    //     Billing bill = new Billing();
+    //     bill.setReservation(reservation);
+    //     bill.setUser(reservation.getUser());
+    //     bill.setTotal((float) (rate * hours));
+    //     bill.setIsPaid(false);
 
-        return billingRepository.save(bill);
-    }
+    //     return billingRepository.save(bill);
+    // }
 }

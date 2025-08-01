@@ -1,5 +1,6 @@
 package com.teamsamuelsagar.coworkingspace.model;
 
+
 import com.teamsamuelsagar.coworkingspace.enums.ReservationStatus;
 import jakarta.persistence.*;
 
