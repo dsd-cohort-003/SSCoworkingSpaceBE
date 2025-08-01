@@ -1,8 +1,8 @@
 package com.teamsamuelsagar.coworkingspace.controller;
 
 import com.teamsamuelsagar.coworkingspace.enums.ResourceCategory;
-import com.teamsamuelsagar.coworkingspace.models.ResourceEntity;
 import com.teamsamuelsagar.coworkingspace.enums.ResourceType;
+import com.teamsamuelsagar.coworkingspace.dto.ResourceDTO;
 import com.teamsamuelsagar.coworkingspace.service.ResourceService;
 
 import java.util.List;
@@ -19,24 +19,24 @@ public class ResourceController {
     @Autowired
     private ResourceService resourceService;
 
-    @GetMapping("/")
-    public List<ResourceEntity> getAllResources() {
-        return resourceService.getAllResources();
+    @GetMapping("/{officeId}")
+    public List<ResourceDTO> getAllResources(long officeId) {
+        return resourceService.getResourcesByOfficeId(officeId);
     }
 
-    @GetMapping("/id/{id}")
-    public ResourceEntity getResourceById(int id) {
-        return resourceService.getResourceById(id);
+    @GetMapping("/{officeId}/id/{id}")
+    public ResourceDTO getResourceById(long officeId, long id) {
+        return resourceService.getResourceById(officeId, id);
     }
 
-    @GetMapping("/category/{category}")
-    public List<ResourceEntity> getResourcesByCategory(ResourceCategory category) {
-        return resourceService.getResourcesByCategory(category);
+    @GetMapping("/{officeId}/category/{category}")
+    public List<ResourceDTO> getResourcesByCategory(long officeId, ResourceCategory category) {
+        return resourceService.getAllByCategory(officeId, category);
     }
 
-    @GetMapping("/type/{type}")
-    public List<ResourceEntity> getResourcesByType(ResourceType type) {
-        return resourceService.getResourcesByType(type);
+    @GetMapping("/{officeId}/type/{type}")
+    public List<ResourceDTO> getResourcesByType(long officeId, ResourceType type) {
+        return resourceService.getResourcesByType(officeId, type);
     }
 
 }

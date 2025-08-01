@@ -1,25 +1,23 @@
 package com.teamsamuelsagar.coworkingspace.repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 
 import com.teamsamuelsagar.coworkingspace.enums.ResourceCategory;
-import com.teamsamuelsagar.coworkingspace.models.ResourceEntity;
 import com.teamsamuelsagar.coworkingspace.enums.ResourceType;
+import com.teamsamuelsagar.coworkingspace.model.Resource;
 
 @Repository
-public interface ResourceRepository extends JpaRepository<ResourceEntity, Integer> {
-    @NonNull
-    List<ResourceEntity> findAll();
+public interface ResourceRepository extends JpaRepository<Resource, Integer> {
 
-    Optional<ResourceEntity> findById(int id);
+    Resource findByIdAndOfficeId(long id, long officeId);
 
-    List<ResourceEntity> findByCategory(ResourceCategory category);
+    List<Resource> findByCategoryAndOfficeId(ResourceCategory category, long officeId);
 
-    List<ResourceEntity> findByType(ResourceType type);
+    List<Resource> findByTypeAndOfficeId(ResourceType type, long officeId);
+
+    List<Resource> findByOfficeId(long officeId);
 
 }

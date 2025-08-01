@@ -1,4 +1,4 @@
-package com.teamsamuelsagar.coworkingspace.models;
+package com.teamsamuelsagar.coworkingspace.model;
 
 import lombok.Data;
 import jakarta.persistence.Entity;
@@ -8,6 +8,10 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
+
+import com.teamsamuelsagar.coworkingspace.enums.ResourceCategory;
+import com.teamsamuelsagar.coworkingspace.enums.ResourceType;
+
 import jakarta.persistence.Column;
 
 @Data
@@ -15,7 +19,7 @@ import jakarta.persistence.Column;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "resource")
-public class ResourceEntity {
+public class Resource {
 
     @Id
     @Column(name = "id")
@@ -26,7 +30,7 @@ public class ResourceEntity {
 
     @Column(name = "category")
     @Enumerated(EnumType.STRING)
-    protected ResourceCategory category;
+    protected ResourceCategory category; // The Category of resource
 
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
@@ -47,8 +51,9 @@ public class ResourceEntity {
      * The summary will be in the format of a JSON object, with the following fields:
      * <ul>
      *     <li>id: the unique identifier of the resource</li>
-     *     <li>CATEGORY: the category of the resource, e.g. "Display", "Audio", etc.</li>
-     *     <li>TYPE: the type of the resource, e.g. "Monitor", "Microphone", etc.</li>
+     *     <li>officeId: the unique identifier of the office</li>
+     *     <li>category: the category of the resource, e.g. "Computer", "Printer", etc.</li>
+     *     <li>type: the type of the resource, e.g. "Monitor", "Microphone", etc.</li>
      *     <li>name: the name of the resource</li>
      *     <li>description: a brief description of the resource</li>
      *     <li>available: the number of resources available</li>
@@ -60,7 +65,8 @@ public class ResourceEntity {
         return "Resource{\n" +
                 "    id=" + id + "\n" +
                 "    officeId=" + officeId + "\n" +
-                "    TYPE=" + type + "\n" +
+                "    category=" + category + "\n" +
+                "    type=" + type + "\n" +
                 "    name='" + name + '\'' + "\n" +
                 "    price=" + price + "\n" +
                 "    description='" + description +
@@ -73,7 +79,7 @@ public class ResourceEntity {
      * @param resource the resource to compare with this resource
      * @return true if the IDs of both resources are equal, false otherwise
      */
-    public boolean equals(ResourceEntity resource) {
+    public boolean equals(Resource resource) {
         return this.id == resource.getId();
     }
 
