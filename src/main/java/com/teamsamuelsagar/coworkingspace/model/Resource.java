@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 
-import com.teamsamuelsagar.coworkingspace.model.enumtype.ResourceCategory;
-import com.teamsamuelsagar.coworkingspace.model.enumtype.ResourceType;
+import com.teamsamuelsagar.coworkingspace.enums.ResourceCategory;
+import com.teamsamuelsagar.coworkingspace.enums.ResourceType;
 
 import jakarta.persistence.Column;
 
@@ -25,9 +25,12 @@ public class Resource {
     @Column(name = "id")
     protected long id;
 
+    @Column(name = "office_id")
+    protected long officeId;
+
     @Column(name = "category")
     @Enumerated(EnumType.STRING)
-    protected ResourceCategory category; // The Category the resource belongs to
+    protected ResourceCategory category; // The Category of resource
 
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
@@ -36,9 +39,6 @@ public class Resource {
     @Column(name = "name")
     protected String name;
 
-    @Column(name = "available")
-    protected int available;
-
     @Column(name = "price")
     protected Float price;
 
@@ -46,22 +46,14 @@ public class Resource {
     protected String description; // The JSON description for the specific resource
 
     /**
-     * Checks if the resource is available.
-     * 
-     * @return true if the resource is available (i.e., the quantity is greater than zero), false otherwise.
-     */
-    public boolean isAvailable() {
-        return available > 0;
-    }
-
-    /**
      * Returns a summary of the resource, useful for logging or displaying information.
      * <p>
      * The summary will be in the format of a JSON object, with the following fields:
      * <ul>
      *     <li>id: the unique identifier of the resource</li>
-     *     <li>CATEGORY: the category of the resource, e.g. "Display", "Audio", etc.</li>
-     *     <li>TYPE: the type of the resource, e.g. "Monitor", "Microphone", etc.</li>
+     *     <li>officeId: the unique identifier of the office</li>
+     *     <li>category: the category of the resource, e.g. "Computer", "Printer", etc.</li>
+     *     <li>type: the type of the resource, e.g. "Monitor", "Microphone", etc.</li>
      *     <li>name: the name of the resource</li>
      *     <li>description: a brief description of the resource</li>
      *     <li>available: the number of resources available</li>
@@ -72,10 +64,10 @@ public class Resource {
     public String getSummary() {
         return "Resource{\n" +
                 "    id=" + id + "\n" +
-                "    CATEGORY=" + category + "\n" +
-                "    TYPE=" + type + "\n" +
+                "    officeId=" + officeId + "\n" +
+                "    category=" + category + "\n" +
+                "    type=" + type + "\n" +
                 "    name='" + name + '\'' + "\n" +
-                "    available=" + available + "\n" +
                 "    price=" + price + "\n" +
                 "    description='" + description +
                 '}';
@@ -89,52 +81,6 @@ public class Resource {
      */
     public boolean equals(Resource resource) {
         return this.id == resource.getId();
-    }
-
-    /**
-     * Attempts to reserve one resource, if available.
-     * <p>
-     * If there is at least one resource available, this method will decrement the available count by one and return true.
-     * Otherwise, it will return false.
-     * </p>
-     * @return true if the resource was reserved, false if not
-     */
-    public boolean reserveOne() {
-        if (available > 0) {
-            available--;
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Attempts to reserve multiple resources, if available.
-     * <p>
-     * If there are at least <code>quantity</code> resources available, this method will decrement the available count by <code>quantity</code> and return true.
-     * Otherwise, it will return false.
-     * </p>
-     * @param quantity the number of resources to reserve
-     * @return true if the resources were reserved, false if not
-     */
-    public boolean reserve(int quantity) {
-        if (available >= quantity) {
-            available -= quantity;
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Attempts to return one resource, if not already fully reserved.
-     * <p>
-     * If there are available resources, this method will increment the available count by one and return true.
-     * Otherwise, it will return false.
-     * </p>
-     * @return true if the resource was returned, false if not
-     */
-    public boolean returnOne() {
-        available++;
-        return true;
     }
 
 }

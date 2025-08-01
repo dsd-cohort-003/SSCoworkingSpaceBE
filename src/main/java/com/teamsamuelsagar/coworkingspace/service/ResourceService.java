@@ -1,6 +1,13 @@
 package com.teamsamuelsagar.coworkingspace.service;
 
+import com.teamsamuelsagar.coworkingspace.enums.ResourceCategory;
+import com.teamsamuelsagar.coworkingspace.enums.ResourceType;
+import com.teamsamuelsagar.coworkingspace.model.Resource;
+import com.teamsamuelsagar.coworkingspace.dto.ResourceDTO;
+import com.teamsamuelsagar.coworkingspace.repository.ResourceRepository;
+
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,20 +23,44 @@ public class ResourceService {
     @Autowired
     private ResourceRepository resourceRepository;
 
-    public List<Resource> getAllResources() {
-        return resourceRepository.findAll();
+    public ResourceDTO getResourceById(long officeId, long id) {
+            return toDTO(resourceRepository.findByIdAndOfficeId(id, officeId));
     }
 
-    public Resource getResourceById(int id) {
-        return resourceRepository.findById(id).orElse(null);
+    public List<ResourceDTO> getAllByCategory(long officeId, ResourceCategory category) {
+        return resourceRepository.findByCategoryAndOfficeId(category, officeId)
+            .stream()
+            .map(resource -> toDTO(resource))
+            .collect(Collectors.toList());
     }
 
-    public List<Resource> getResourcesByCategory(ResourceCategory category) {
-        return resourceRepository.findByCategory(category);
+    public List<ResourceDTO> getResourcesByType(long officeId, ResourceType type) {
+        return resourceRepository.findByTypeAndOfficeId(type, officeId)
+            .stream()
+            .map(resource -> toDTO(resource))
+            .collect(Collectors.toList());
     }
 
-    public List<Resource> getResourcesByType(ResourceType type) {
-        return resourceRepository.findByType(type);
+    public List<ResourceDTO> getResourcesByOfficeId(long officeId) {
+        return resourceRepository.findByOfficeId(officeId)
+            .stream()
+            .map(resource -> toDTO(resource))
+            .collect(Collectors.toList());
+    }
+
+    private ResourceDTO toDTO(Resource entity) {
+        ResourceDTO dto = new ResourceDTO();
+        dto.setId(entity.getId());
+        dto.setName(entity.getName());
+        dto.setDescription(entity.getDescription());
+        dto.setType(entity.getType());
+        dto.setCategory(entity.getCategory());
+        dto.setReserved(resourceReserved(entity));
+        return dto;
+    }
+
+    private boolean resourceReserved(Resource entity) {
+        return false; // Stub until ResourceReservation is implemented
     }
 
 }

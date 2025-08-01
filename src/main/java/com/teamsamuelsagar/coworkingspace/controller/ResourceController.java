@@ -19,24 +19,24 @@ public class ResourceController {
     @Autowired
     private ResourceService resourceService;
 
-    @GetMapping("/")
-    public List<Resource> getAllResources() {
-        return resourceService.getAllResources();
+    @GetMapping("/{officeId}")
+    public List<ResourceDTO> getAllResources(long officeId) {
+        return resourceService.getResourcesByOfficeId(officeId);
     }
 
-    @GetMapping("/id/{id}")
-    public Resource getResourceById(int id) {
-        return resourceService.getResourceById(id);
+    @GetMapping("/{officeId}/id/{id}")
+    public ResourceDTO getResourceById(long officeId, long id) {
+        return resourceService.getResourceById(officeId, id);
     }
 
-    @GetMapping("/category/{category}")
-    public List<Resource> getResourcesByCategory(ResourceCategory category) {
-        return resourceService.getResourcesByCategory(category);
+    @GetMapping("/{officeId}/category/{category}")
+    public List<ResourceDTO> getResourcesByCategory(long officeId, ResourceCategory category) {
+        return resourceService.getAllByCategory(officeId, category);
     }
 
-    @GetMapping("/type/{type}")
-    public List<Resource> getResourcesByType(ResourceType type) {
-        return resourceService.getResourcesByType(type);
+    @GetMapping("/{officeId}/type/{type}")
+    public List<ResourceDTO> getResourcesByType(long officeId, ResourceType type) {
+        return resourceService.getResourcesByType(officeId, type);
     }
 
 }
