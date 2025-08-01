@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.teamsamuelsagar.coworkingspace.enums.ResourceCategory;
-import com.teamsamuelsagar.coworkingspace.enums.ResourceType;
 import com.teamsamuelsagar.coworkingspace.model.Resource;
+import com.teamsamuelsagar.coworkingspace.model.enumtype.ResourceCategory;
+import com.teamsamuelsagar.coworkingspace.model.enumtype.ResourceType;
 
 @Repository
 public interface ResourceRepository extends JpaRepository<Resource, Integer> {

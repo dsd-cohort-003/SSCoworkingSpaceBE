@@ -1,16 +1,16 @@
 package com.teamsamuelsagar.coworkingspace.controller;
 
-import com.teamsamuelsagar.coworkingspace.enums.ResourceCategory;
-import com.teamsamuelsagar.coworkingspace.enums.ResourceType;
-import com.teamsamuelsagar.coworkingspace.dto.ResourceDTO;
-import com.teamsamuelsagar.coworkingspace.service.ResourceService;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.teamsamuelsagar.coworkingspace.model.enumtype.ResourceCategory;
+import com.teamsamuelsagar.coworkingspace.model.enumtype.ResourceType;
+import com.teamsamuelsagar.coworkingspace.service.ResourceService;
+import com.teamsamuelsagar.coworkingspace.dto.ResourceDTO;
 
 @RestController
 @RequestMapping("/api/resources")

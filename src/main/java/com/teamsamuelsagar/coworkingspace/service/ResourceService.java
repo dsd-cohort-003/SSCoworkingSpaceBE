@@ -1,16 +1,16 @@
 package com.teamsamuelsagar.coworkingspace.service;
 
-import com.teamsamuelsagar.coworkingspace.enums.ResourceCategory;
-import com.teamsamuelsagar.coworkingspace.enums.ResourceType;
-import com.teamsamuelsagar.coworkingspace.model.Resource;
-import com.teamsamuelsagar.coworkingspace.dto.ResourceDTO;
-import com.teamsamuelsagar.coworkingspace.repository.ResourceRepository;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.teamsamuelsagar.coworkingspace.model.Resource;
+import com.teamsamuelsagar.coworkingspace.model.enumtype.ResourceCategory;
+import com.teamsamuelsagar.coworkingspace.model.enumtype.ResourceType;
+import com.teamsamuelsagar.coworkingspace.repository.ResourceRepository;
+import com.teamsamuelsagar.coworkingspace.dto.ResourceDTO;
 
 @Service
 public class ResourceService {

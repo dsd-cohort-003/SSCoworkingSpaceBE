@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 
-import com.teamsamuelsagar.coworkingspace.enums.ResourceCategory;
-import com.teamsamuelsagar.coworkingspace.enums.ResourceType;
+import com.teamsamuelsagar.coworkingspace.model.enumtype.ResourceCategory;
+import com.teamsamuelsagar.coworkingspace.model.enumtype.ResourceType;
 
 import jakarta.persistence.Column;
 
