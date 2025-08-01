@@ -21,7 +21,7 @@ public class ResourceReservation {
     @JoinColumn(name = "resource_id")
     private Resource resource;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "reservation_id", referencedColumnName = "id")
     private Reservation reservation;
 
