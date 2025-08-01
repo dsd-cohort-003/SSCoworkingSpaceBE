@@ -62,4 +62,10 @@ The password should be given to you by a member of the cohort team. Just ask one
  ### 4. Access the app
  Will start it on port 8080 by default
  You can test this by opening ``http://localhost:8080/``, and this would be the API endpoint if using this as a back end.
+
+
+ ### 5. PR Standards
+ Include Type of change, Short Description, and Jira Ticket number in the title. In the description include a summary of the change, testing evidence
+ 
+ EG: Feature: Add retrieve office endpoint SCRUM-34 
  
