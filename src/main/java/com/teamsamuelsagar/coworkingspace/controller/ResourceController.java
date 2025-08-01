@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.teamsamuelsagar.coworkingspace.model.enumtype.ResourceCategory;
@@ -19,24 +20,24 @@ public class ResourceController {
     @Autowired
     private ResourceService resourceService;
 
-    @GetMapping("/{officeId}")
-    public List<ResourceDTO> getAllResources(long officeId) {
-        return resourceService.getResourcesByOfficeId(officeId);
+    @GetMapping("/")
+    public List<ResourceDTO> getAllResources(@RequestParam long officeId, @RequestParam String startDate, @RequestParam String endDate ) {
+        return resourceService.getResourcesByOfficeId(officeId, startDate, endDate);
     }
 
-    @GetMapping("/{officeId}/id/{id}")
-    public ResourceDTO getResourceById(long officeId, long id) {
-        return resourceService.getResourceById(officeId, id);
+    @GetMapping("{id}")
+    public ResourceDTO getResourceById(@RequestParam long officeId, @RequestParam String startDate, @RequestParam String endDate, @RequestParam long id) {
+        return resourceService.getResourceById(officeId, startDate, endDate, id);
     }
 
-    @GetMapping("/{officeId}/category/{category}")
-    public List<ResourceDTO> getResourcesByCategory(long officeId, ResourceCategory category) {
-        return resourceService.getAllByCategory(officeId, category);
+    @GetMapping("{category}")
+    public List<ResourceDTO> getResourcesByCategory(@RequestParam long officeId, @RequestParam String startDate, @RequestParam String endDate, @RequestParam ResourceCategory category) {
+        return resourceService.getAllByCategory(officeId, startDate, endDate, category);
     }
 
-    @GetMapping("/{officeId}/type/{type}")
-    public List<ResourceDTO> getResourcesByType(long officeId, ResourceType type) {
-        return resourceService.getResourcesByType(officeId, type);
+    @GetMapping("{type}")
+    public List<ResourceDTO> getResourcesByType(@RequestParam long officeId, @RequestParam String startDate, @RequestParam String endDate, @RequestParam ResourceType type) {
+        return resourceService.getResourcesByType(officeId, startDate, endDate, type);
     }
 
 }
