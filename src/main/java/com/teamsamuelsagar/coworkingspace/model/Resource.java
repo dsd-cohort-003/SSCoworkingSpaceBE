@@ -14,8 +14,9 @@ import com.teamsamuelsagar.coworkingspace.enums.ResourceType;
 
 import jakarta.persistence.Column;
 
-@Data
+
 @Entity
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "resource")
