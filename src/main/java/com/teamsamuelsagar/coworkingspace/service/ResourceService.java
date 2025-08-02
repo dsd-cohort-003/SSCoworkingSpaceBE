@@ -1,5 +1,6 @@
 package com.teamsamuelsagar.coworkingspace.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,32 +22,32 @@ public class ResourceService {
     @Autowired
     private ResourceReservationService resourceReservationService;
 
-    public ResourceDTO getResourceById(long officeId, String startDate, String endDate, long id) {
+    public ResourceDTO getResourceById(long officeId, LocalDate startDate, LocalDate endDate, long id) {
             return toDTO(resourceRepository.findByIdAndOfficeId(id, officeId), startDate, endDate);
     }
 
-    public List<ResourceDTO> getAllByCategory(long officeId, String startDate, String endDate, ResourceCategory category) {
+    public List<ResourceDTO> getAllByCategory(long officeId, LocalDate startDate, LocalDate endDate, ResourceCategory category) {
         return resourceRepository.findByCategoryAndOfficeId(category, officeId)
             .stream()
             .map(resource -> toDTO(resource, startDate, endDate))
             .collect(Collectors.toList());
     }
 
-    public List<ResourceDTO> getResourcesByType(long officeId, String startDate, String endDate, ResourceType type) {
+    public List<ResourceDTO> getResourcesByType(long officeId, LocalDate startDate, LocalDate endDate, ResourceType type) {
         return resourceRepository.findByTypeAndOfficeId(type, officeId)
             .stream()
             .map(resource -> toDTO(resource, startDate, endDate))
             .collect(Collectors.toList());
     }
 
-    public List<ResourceDTO> getResourcesByOfficeId(long officeId, String startDate, String endDate) {
+    public List<ResourceDTO> getResourcesByOfficeId(long officeId, LocalDate startDate, LocalDate endDate) {
         return resourceRepository.findByOfficeId(officeId)
             .stream()
             .map(resource -> toDTO(resource, startDate, endDate))
             .collect(Collectors.toList());
     }
 
-    private ResourceDTO toDTO(Resource entity, String startDate, String endDate) {
+    private ResourceDTO toDTO(Resource entity, LocalDate startDate, LocalDate endDate) {
         ResourceDTO dto = new ResourceDTO();
         dto.setId(entity.getId());
         dto.setName(entity.getName());
@@ -57,7 +58,7 @@ public class ResourceService {
         return dto;
     }
 
-    private boolean resourceReserved(Resource entity, String startDate, String endDate) {
+    private boolean resourceReserved(Resource entity, LocalDate startDate, LocalDate endDate) {
         return resourceReservationService.getReservationByResourceId(entity.getId(), startDate, endDate).isEmpty();
     }
 

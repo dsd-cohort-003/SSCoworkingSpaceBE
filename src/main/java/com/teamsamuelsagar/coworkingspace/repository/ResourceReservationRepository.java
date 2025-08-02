@@ -1,5 +1,6 @@
 package com.teamsamuelsagar.coworkingspace.repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -27,8 +28,8 @@ public interface ResourceReservationRepository {
             """)
     List<ResourceReservation> findActiveReservations(
         @Param("resourceId") Long resourceId, 
-        @Param("startDate") String startDate, 
-        @Param("endDate") String endDate, 
+        @Param("startDate") LocalDate startDate, 
+        @Param("endDate") LocalDate endDate, 
         @Param("activeStatus") List<ReservationStatus> activeStatus
         );
 
