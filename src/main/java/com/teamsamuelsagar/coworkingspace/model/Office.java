@@ -22,8 +22,15 @@ public class Office {
 
     private String name;
 
-    private Double price;
+    private String description;
 
-    private Double size;
+    private String size;
 
+    private String state;
+
+    private String city;
+
+    private String street_address;
+
+    private String zipcode;
 }

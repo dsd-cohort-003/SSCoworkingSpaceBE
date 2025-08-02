@@ -25,7 +25,8 @@ public class DeskService {
     }
 
     public List<Desk> getDesksForOffice(RetrieveDesksRequest request, Long officeId) {
-        return deskRepository.findAvailableDesks(officeId, request.getStartDate(), request.getEndDate());
+        return deskRepository.findAvailableDesks(officeId, 
+        request.getStartDate(), request.getEndDate());
     }
 
     public Desk createDesk(Desk desk) {
