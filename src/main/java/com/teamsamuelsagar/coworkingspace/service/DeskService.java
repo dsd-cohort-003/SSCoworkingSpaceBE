@@ -16,6 +16,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class DeskService {
     private final DeskRepository deskRepository;
+
+    public Desk getDesk(Long deskId) {
+        return deskRepository.findById(deskId).orElseThrow(EntityNotFoundException::new);
+    }
     public List<Desk> getAllDesks() {
         return deskRepository.findAll();
     }

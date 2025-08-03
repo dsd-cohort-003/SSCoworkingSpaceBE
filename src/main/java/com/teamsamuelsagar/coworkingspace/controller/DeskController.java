@@ -29,7 +29,12 @@ public class DeskController {
         return ResponseEntity.ok(deskService.getAllDesks());
     }
 
-    @GetMapping(value = "/desks/{officeId}")
+    @GetMapping(value = "/desks/{deskId}")
+    public ResponseEntity<Desk> getDesk(@PathVariable Long deskId) {
+        return ResponseEntity.ok(deskService.getDesk(deskId));
+    }
+
+    @GetMapping(value = "/desks/office/{officeId}")
     public ResponseEntity<List<Desk>> getAllDesksForOffice(@PathVariable Long officeId) {
         return ResponseEntity.ok(deskService.getAllDesksForOffice(officeId));
     }
@@ -39,7 +44,7 @@ public class DeskController {
         return ResponseEntity.ok(deskService.createDesk(request));
     }
 
-    @PostMapping(value = "/desks/{officeId}")
+    @PostMapping(value = "/desks/office/{officeId}")
     public ResponseEntity<List<Desk>> getDesksForOffice(@PathVariable Long officeId, @RequestBody RetrieveDesksRequest request) {
         return ResponseEntity.ok(deskService.getDesksForOffice(request, officeId));
     }
