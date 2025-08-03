@@ -10,7 +10,7 @@ import com.teamsamuelsagar.coworkingspace.model.enumtype.ResourceCategory;
 import com.teamsamuelsagar.coworkingspace.model.enumtype.ResourceType;
 
 @Repository
-public interface ResourceRepository extends JpaRepository<Resource, Integer> {
+public interface ResourceRepository extends JpaRepository<Resource, Long> {
 
     Resource findByIdAndOfficeId(long id, long officeId);
 
