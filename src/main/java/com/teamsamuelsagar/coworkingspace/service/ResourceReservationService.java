@@ -4,11 +4,13 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.teamsamuelsagar.coworkingspace.model.ResourceReservation;
 import com.teamsamuelsagar.coworkingspace.model.enumtype.ReservationStatus;
 import com.teamsamuelsagar.coworkingspace.repository.ResourceReservationRepository;
 
+@Service
 public class ResourceReservationService {
 
     @Autowired
