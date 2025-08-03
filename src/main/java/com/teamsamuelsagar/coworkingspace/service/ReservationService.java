@@ -31,4 +31,8 @@ public class ReservationService {
     public Reservation createNewReservation(Reservation reservation) {
         return reservationRepository.save(reservation);
     }
+
+    public List<Reservation> getReservationsByUserId(Long userId) {
+        return reservationRepository.findAllReservationsByUserId(userId);
+    }
 }

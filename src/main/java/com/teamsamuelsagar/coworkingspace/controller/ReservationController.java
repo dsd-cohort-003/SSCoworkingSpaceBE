@@ -63,6 +63,11 @@ public class ReservationController {
         return ResponseEntity.ok(reservationService.getReservationByConfirmationNumber(confirmationNumber));
     }
 
+    @GetMapping("/reservation/user/{userId}")
+    public ResponseEntity<List<Reservation>> findReservationByUserId(@PathVariable String userId) {
+        return ResponseEntity.ok(reservationService.getReservationsByUserId(Long.parseLong(userId)));
+    }
+
     @PostMapping("/reservation")
     public ResponseEntity<Reservation> createReservation(@RequestBody ReservationRequestDTO reservation) {
         Reservation newReservation = reservationService.createNewReservation(createReservationFromDTO(reservation));
