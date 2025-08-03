@@ -1,11 +1,11 @@
 package com.teamsamuelsagar.coworkingspace.dto;
 
-import java.time.LocalDate;
+import java.sql.Date;
 
 import lombok.Data;
 
 @Data
 public class RetrieveDesksRequest {
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private Date startDate;
+    private Date endDate;
 }

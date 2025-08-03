@@ -1,6 +1,7 @@
 package com.teamsamuelsagar.coworkingspace.repository;
 
-import java.time.LocalDate;
+import java.sql.Date;
+
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,3 +23,4 @@ public interface DeskRepository extends JpaRepository<Desk, Long> {
                                   @Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
     
 }
+

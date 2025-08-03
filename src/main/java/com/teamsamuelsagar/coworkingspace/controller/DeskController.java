@@ -44,6 +44,7 @@ public class DeskController {
         return ResponseEntity.ok(deskService.getDesksForOffice(request, officeId));
     }
 
+
     @DeleteMapping(value = "/desks/{deskId}") 
     public ResponseEntity<Void> deleteDesk(@PathVariable long deskId) {
         deskService.deleteDesk(deskId);
