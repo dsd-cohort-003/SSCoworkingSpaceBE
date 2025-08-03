@@ -28,20 +28,6 @@ public class Reservation {
     @Enumerated(EnumType.STRING)
     private ReservationStatus reservationStatus;
 
-   /* @OneToOne(
-            mappedBy = "reservation",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
-    )
-    private DeskReservation deskReservation;
-
-    @OneToOne(
-            mappedBy = "reservation",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
-    )
-    private ResourceReservation resourceReservation;*/
-
     public Reservation() {
     }
 
@@ -106,20 +92,4 @@ public class Reservation {
     public void setReservationStatus(ReservationStatus reservationStatus) {
         this.reservationStatus = reservationStatus;
     }
-
-    /*public DeskReservation getDeskReservation() {
-        return deskReservation;
-    }
-
-    public void setDeskReservation(DeskReservation deskReservation) {
-        this.deskReservation = deskReservation;
-    }
-
-    public ResourceReservation getResourceReservation() {
-        return resourceReservation;
-    }
-
-    public void setResourceReservation(ResourceReservation resourceReservation) {
-        this.resourceReservation = resourceReservation;
-    }*/
 }
