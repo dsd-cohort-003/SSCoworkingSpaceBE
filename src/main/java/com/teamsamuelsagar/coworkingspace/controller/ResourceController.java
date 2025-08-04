@@ -27,17 +27,17 @@ public class ResourceController {
         return resourceService.getResourcesByOfficeId(request.getOfficeId(), request.getStartDate(), request.getEndDate());
     }
 
-    @GetMapping("{id}")
-    public ResourceDTO getResourceById(@RequestBody RetrieveResourceRequest request, @RequestParam long id) {
+    @GetMapping("/id")
+    public ResourceDTO getResourceById(@RequestBody RetrieveResourceRequest request, @RequestParam Long id) {
         return resourceService.getResourceById(request.getOfficeId(), request.getStartDate(), request.getEndDate(), id);
     }
 
-    @GetMapping("{category}")
+    @GetMapping("/category")
     public List<ResourceDTO> getResourcesByCategory(@RequestBody RetrieveResourceRequest request, @RequestParam ResourceCategory category) {
         return resourceService.getAllByCategory(request.getOfficeId(), request.getStartDate(), request.getEndDate(), category);
     }
 
-    @GetMapping("{type}")
+    @GetMapping("/type")
     public List<ResourceDTO> getResourcesByType(@RequestBody RetrieveResourceRequest request, @RequestParam ResourceType type) {
         return resourceService.getResourcesByType(request.getOfficeId(), request.getStartDate(), request.getEndDate(), type);
     }
