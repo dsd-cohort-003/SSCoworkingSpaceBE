@@ -4,6 +4,11 @@ public enum ReservationStatus {
 
     PENDING, // Pending admin approval
     APPROVED, // Approved and awaiting for the user to actually show up!
-    COMPLETE //RELEASED // Denoting that the Reservation is over.
+    COMPLETE, //RELEASED // Denoting that the Reservation is over.
+    AVAILABLE,
+    BOOKED,
+    CONFIRMED,
+    CHECKED_IN,
+    CHECKED_OUT
 
 }
