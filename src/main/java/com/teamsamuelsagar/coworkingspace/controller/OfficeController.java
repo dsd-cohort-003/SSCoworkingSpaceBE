@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import java.util.ArrayList;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +22,7 @@ import com.teamsamuelsagar.coworkingspace.service.OfficeService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/office")
+@RequestMapping(value = { "/api/office", "/offices"})   // for compatibility
 @RequiredArgsConstructor
 public class OfficeController {
     private final OfficeService officeService;

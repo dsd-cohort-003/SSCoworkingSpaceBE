@@ -16,6 +16,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class DeskService {
     private final DeskRepository deskRepository;
+
+    public Desk getDesk(Long deskId) {
+        return deskRepository.findById(deskId).orElseThrow(EntityNotFoundException::new);
+    }
     public List<Desk> getAllDesks() {
         return deskRepository.findAll();
     }
@@ -25,7 +29,8 @@ public class DeskService {
     }
 
     public List<Desk> getDesksForOffice(RetrieveDesksRequest request, Long officeId) {
-        return deskRepository.findAvailableDesks(officeId, request.getStartDate(), request.getEndDate());
+        return deskRepository.findAvailableDesks(officeId, 
+        request.getStartDate(), request.getEndDate());
     }
 
     public Desk createDesk(Desk desk) {

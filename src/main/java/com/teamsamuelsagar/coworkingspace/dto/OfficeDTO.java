@@ -9,6 +9,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class OfficeDTO {
     private String name;
+
     private Double price;
+
     private Double size;
+
+    private String state;
+
+    private String city;
+
+    private String description;
+
+    private String streetAddress;
+
+    private String zipcode;
 }
