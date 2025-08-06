@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.teamsamuelsagar.coworkingspace.model.Resource;
 import com.teamsamuelsagar.coworkingspace.model.enumtype.ResourceCategory;
 import com.teamsamuelsagar.coworkingspace.model.enumtype.ResourceType;
 import com.teamsamuelsagar.coworkingspace.service.ResourceService;
