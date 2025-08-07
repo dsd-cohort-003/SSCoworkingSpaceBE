@@ -23,10 +23,6 @@ public class MaintenanceTicket {
 
     @ManyToOne
     private User user;
-
-    @Column(name = "progress")
-    private String ticketProgress;
-
     private String status;
     private String category;
     private String location;

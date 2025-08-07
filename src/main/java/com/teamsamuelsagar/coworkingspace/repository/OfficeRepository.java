@@ -6,6 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.teamsamuelsagar.coworkingspace.model.Office;
 
 @Repository
-public interface OfficeRepository extends JpaRepository<Office, Long> {
-    
-}
+public interface OfficeRepository extends JpaRepository<Office, Long> {}
+
