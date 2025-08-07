@@ -6,6 +6,7 @@ import com.teamsamuelsagar.coworkingspace.model.*;
 import com.teamsamuelsagar.coworkingspace.model.enumtype.ReservationStatus;
 import com.teamsamuelsagar.coworkingspace.repository.DeskRepository;
 import com.teamsamuelsagar.coworkingspace.repository.DeskReservationRepository;
+import com.teamsamuelsagar.coworkingspace.repository.ResourceRepository;
 import com.teamsamuelsagar.coworkingspace.repository.ResourceReservationRepository;
 import com.teamsamuelsagar.coworkingspace.service.ReservationService;
 import com.teamsamuelsagar.coworkingspace.service.ResourceService;
@@ -30,19 +31,21 @@ public class ReservationController {
 
     private final DeskReservationRepository deskReservationRepository;
 
-    private final ResourceService resourceService;
+    private final ResourceRepository resourceRepository;
     private final ResourceReservationRepository resourceReservationRepository;
 
     public ReservationController(
             ReservationService reservationService,
             UserService userService,
             DeskRepository deskRepository,
-            DeskReservationRepository deskReservationRepository, ResourceService resourceService, ResourceReservationRepository resourceReservationRepository) {
+            DeskReservationRepository deskReservationRepository,
+            ResourceRepository resourceRepository,
+            ResourceReservationRepository resourceReservationRepository) {
         this.reservationService = reservationService;
         this.userService = userService;
         this.deskRepository = deskRepository;
         this.deskReservationRepository = deskReservationRepository;
-        this.resourceService = resourceService;
+        this.resourceRepository = resourceRepository;
         this.resourceReservationRepository = resourceReservationRepository;
     }
 
@@ -78,18 +81,18 @@ public class ReservationController {
         deskReservation.setReservation(newReservation);
         deskReservation.setStartDate(LocalDate.parse(reservation.getStartDate()));
         deskReservation.setEndDate(LocalDate.parse(reservation.getEndDate()));
-        deskReservation.setStatus(String.valueOf(ReservationStatus.BOOKED));
+        deskReservation.setStatus(String.valueOf(ReservationStatus.APPROVED));
         deskReservationRepository.save(deskReservation);
 
 
         reservation.getResourceIds().forEach(id -> {
             ResourceReservation resourceReservation = new ResourceReservation();
-            Resource resource = resourceService.getResourceById(id.intValue());
-            resourceReservation.setResource(resource);
+            Optional<Resource> resource = resourceRepository.findById(id);
+            resource.ifPresent(resourceReservation::setResource);
             resourceReservation.setReservation(newReservation);
             resourceReservation.setStartDate(LocalDate.parse(reservation.getStartDate()));
             resourceReservation.setEndDate(LocalDate.parse(reservation.getEndDate()));
-            resourceReservation.setStatus(String.valueOf(ReservationStatus.BOOKED));
+            resourceReservation.setStatus(ReservationStatus.APPROVED);
 
             resourceReservationRepository.save(resourceReservation);
         });
@@ -105,7 +108,7 @@ public class ReservationController {
         newReservation.setUser(user);
         newReservation.setCreatedAt(LocalDateTime.now());
         newReservation.setConfirmationNumber(ConfirmationNumberGenerator.generateConfirmationNumber(10));
-        newReservation.setReservationStatus(ReservationStatus.CONFIRMED);
+        newReservation.setReservationStatus(ReservationStatus.APPROVED);
 
         return newReservation;
     }

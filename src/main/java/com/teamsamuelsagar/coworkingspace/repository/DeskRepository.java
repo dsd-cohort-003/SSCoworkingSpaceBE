@@ -19,7 +19,7 @@ public interface DeskRepository extends JpaRepository<Desk, Long> {
             (SELECT dr.desk.id FROM DeskReservation dr where dr.startDate <= :endDate AND dr.endDate >= :startDate)
             """)
     List<Desk> findAvailableDesks(@Param("officeId") Long officeId,
-                                  @Param("startDate") Date startDate, @Param("endDate") Date endDate);
+                                  @Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
     
 }
 
