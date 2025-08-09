@@ -25,10 +25,10 @@ public class Resource {
 
     @Id
     @Column(name = "id")
-    protected long id;
+    protected Long id;
 
     @Column(name = "office_id")
-    protected long officeId;
+    protected Long officeId;
 
     @Column(name = "category")
     @Enumerated(EnumType.STRING)

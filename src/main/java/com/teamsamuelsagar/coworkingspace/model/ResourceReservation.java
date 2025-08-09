@@ -2,6 +2,7 @@ package com.teamsamuelsagar.coworkingspace.model;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.teamsamuelsagar.coworkingspace.model.enumtype.ReservationStatus;
 
 import jakarta.persistence.*;
@@ -25,6 +26,7 @@ public class ResourceReservation {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "reservation_id", referencedColumnName = "id")
+    @JsonBackReference
     private Reservation reservation;
 
     private LocalDate startDate;
