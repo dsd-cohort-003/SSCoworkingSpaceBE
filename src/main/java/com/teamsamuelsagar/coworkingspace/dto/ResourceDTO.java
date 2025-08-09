@@ -12,10 +12,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ResourceDTO {
 
+    private long officeId;
     private long id;
     private String name;
     private String description;
     private String imageUrl;
+    private float price;
     private ResourceType type;
     private ResourceCategory category;
     private boolean reserved;

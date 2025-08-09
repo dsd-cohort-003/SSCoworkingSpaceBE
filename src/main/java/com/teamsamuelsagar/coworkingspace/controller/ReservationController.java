@@ -29,6 +29,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
+@RequestMapping("/api")
 public class ReservationController {
 
     @Autowired

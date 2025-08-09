@@ -70,9 +70,11 @@ public class ResourceService {
 
     private Resource toResource(ResourceDTO resource) {
         Resource entity = new Resource();
+        entity.setOfficeId(resource.getOfficeId());
         entity.setId(resource.getId());
         entity.setName(resource.getName());
         entity.setDescription(resource.getDescription());
+        entity.setPrice(resource.getPrice());
         entity.setType(resource.getType());
         entity.setCategory(resource.getCategory());
         return entity;
