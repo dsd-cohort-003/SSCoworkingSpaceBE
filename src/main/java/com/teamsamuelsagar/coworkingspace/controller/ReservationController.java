@@ -2,16 +2,23 @@ package com.teamsamuelsagar.coworkingspace.controller;
 
 import com.teamsamuelsagar.coworkingspace.dto.ReservationRequestDTO;
 
-import com.teamsamuelsagar.coworkingspace.model.*;
-import com.teamsamuelsagar.coworkingspace.model.enumtype.ReservationStatus;
+import com.teamsamuelsagar.coworkingspace.model.Desk;
+import com.teamsamuelsagar.coworkingspace.model.DeskReservation;
 import com.teamsamuelsagar.coworkingspace.repository.DeskRepository;
 import com.teamsamuelsagar.coworkingspace.repository.DeskReservationRepository;
+import com.teamsamuelsagar.coworkingspace.model.Resource;
+import com.teamsamuelsagar.coworkingspace.model.ResourceReservation;
 import com.teamsamuelsagar.coworkingspace.repository.ResourceRepository;
 import com.teamsamuelsagar.coworkingspace.repository.ResourceReservationRepository;
-import com.teamsamuelsagar.coworkingspace.service.ReservationService;
 import com.teamsamuelsagar.coworkingspace.service.ResourceService;
+import com.teamsamuelsagar.coworkingspace.model.User;
 import com.teamsamuelsagar.coworkingspace.service.UserService;
+import com.teamsamuelsagar.coworkingspace.model.Reservation;
+import com.teamsamuelsagar.coworkingspace.model.enumtype.ReservationStatus;
+import com.teamsamuelsagar.coworkingspace.service.ReservationService;
 import com.teamsamuelsagar.coworkingspace.util.ConfirmationNumberGenerator;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -24,14 +31,22 @@ import java.util.Optional;
 @Controller
 public class ReservationController {
 
+    @Autowired
     private final ReservationService reservationService;
+    
+    @Autowired
     private final UserService userService;
 
+    @Autowired
     private final DeskRepository deskRepository;
 
+    @Autowired
     private final DeskReservationRepository deskReservationRepository;
 
+    @Autowired
     private final ResourceRepository resourceRepository;
+    
+    @Autowired
     private final ResourceReservationRepository resourceReservationRepository;
 
     public ReservationController(

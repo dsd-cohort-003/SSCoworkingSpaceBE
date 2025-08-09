@@ -25,6 +25,8 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping(value = { "/api/office", "/offices"})   // for compatibility
 @RequiredArgsConstructor
 public class OfficeController {
+
+    @Autowired
     private final OfficeService officeService;
 
     @GetMapping
