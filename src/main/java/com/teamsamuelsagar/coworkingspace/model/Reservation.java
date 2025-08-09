@@ -1,14 +1,27 @@
 package com.teamsamuelsagar.coworkingspace.model;
 
-
-
 import com.teamsamuelsagar.coworkingspace.model.enumtype.ReservationStatus;
-import jakarta.persistence.*;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Column;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,12 +37,13 @@ public class Reservation {
 
     private String confirmationNumber;
 
+    private Boolean isPrivate;
+
+    private String description;
+
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private ReservationStatus reservationStatus;
-
-    public Reservation() {
-    }
 
     public Reservation(Long id,
                    User user,

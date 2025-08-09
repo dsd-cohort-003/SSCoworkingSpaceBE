@@ -3,9 +3,9 @@ package com.teamsamuelsagar.coworkingspace.dto;
 import com.teamsamuelsagar.coworkingspace.model.enumtype.ResourceCategory;
 import com.teamsamuelsagar.coworkingspace.model.enumtype.ResourceType;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Data
 @AllArgsConstructor

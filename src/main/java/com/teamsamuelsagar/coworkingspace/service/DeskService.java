@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.teamsamuelsagar.coworkingspace.dto.RetrieveDesksRequest;
-import com.teamsamuelsagar.coworkingspace.model.Office;
 import com.teamsamuelsagar.coworkingspace.model.Desk;
 import com.teamsamuelsagar.coworkingspace.repository.DeskRepository;
 

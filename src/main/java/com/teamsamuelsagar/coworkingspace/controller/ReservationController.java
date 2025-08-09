@@ -10,7 +10,6 @@ import com.teamsamuelsagar.coworkingspace.model.Resource;
 import com.teamsamuelsagar.coworkingspace.model.ResourceReservation;
 import com.teamsamuelsagar.coworkingspace.repository.ResourceRepository;
 import com.teamsamuelsagar.coworkingspace.repository.ResourceReservationRepository;
-import com.teamsamuelsagar.coworkingspace.service.ResourceService;
 import com.teamsamuelsagar.coworkingspace.model.User;
 import com.teamsamuelsagar.coworkingspace.service.UserService;
 import com.teamsamuelsagar.coworkingspace.model.Reservation;
@@ -20,50 +19,39 @@ import com.teamsamuelsagar.coworkingspace.util.ConfirmationNumberGenerator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
 @RequestMapping("/api")
 public class ReservationController {
 
     @Autowired
-    private final ReservationService reservationService;
+    private ReservationService reservationService;
     
     @Autowired
-    private final UserService userService;
+    private UserService userService;
 
     @Autowired
-    private final DeskRepository deskRepository;
+    private DeskRepository deskRepository;
 
     @Autowired
-    private final DeskReservationRepository deskReservationRepository;
+    private DeskReservationRepository deskReservationRepository;
 
     @Autowired
-    private final ResourceRepository resourceRepository;
+    private ResourceRepository resourceRepository;
     
     @Autowired
-    private final ResourceReservationRepository resourceReservationRepository;
-
-    public ReservationController(
-            ReservationService reservationService,
-            UserService userService,
-            DeskRepository deskRepository,
-            DeskReservationRepository deskReservationRepository,
-            ResourceRepository resourceRepository,
-            ResourceReservationRepository resourceReservationRepository) {
-        this.reservationService = reservationService;
-        this.userService = userService;
-        this.deskRepository = deskRepository;
-        this.deskReservationRepository = deskReservationRepository;
-        this.resourceRepository = resourceRepository;
-        this.resourceReservationRepository = resourceReservationRepository;
-    }
+    private ResourceReservationRepository resourceReservationRepository;
 
     @GetMapping("/reservation")
     public ResponseEntity<List<Reservation>> findAllReservations() {
