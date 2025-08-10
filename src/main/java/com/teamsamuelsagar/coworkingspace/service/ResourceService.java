@@ -48,6 +48,10 @@ public class ResourceService {
             .map(resource -> toDTO(resource, startDate, endDate))
             .collect(Collectors.toList());
     }
+    
+    public Resource createResource(ResourceDTO resource) {
+        return resourceRepository.save(toResource(resource));
+    }
 
     private ResourceDTO toDTO(Resource entity, LocalDate startDate, LocalDate endDate) {
         ResourceDTO dto = new ResourceDTO();
@@ -62,6 +66,18 @@ public class ResourceService {
 
     private boolean resourceReserved(Resource entity, LocalDate startDate, LocalDate endDate) {
         return resourceReservationService.getReservationByResourceId(entity.getId(), startDate, endDate).isEmpty();
+    }
+
+    private Resource toResource(ResourceDTO resource) {
+        Resource entity = new Resource();
+        entity.setOfficeId(resource.getOfficeId());
+        entity.setId(resource.getId());
+        entity.setName(resource.getName());
+        entity.setDescription(resource.getDescription());
+        entity.setPrice(resource.getPrice());
+        entity.setType(resource.getType());
+        entity.setCategory(resource.getCategory());
+        return entity;
     }
 
 }

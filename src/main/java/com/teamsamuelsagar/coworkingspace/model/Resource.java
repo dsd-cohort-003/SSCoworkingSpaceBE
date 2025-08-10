@@ -2,24 +2,25 @@ package com.teamsamuelsagar.coworkingspace.model;
 
 import com.teamsamuelsagar.coworkingspace.model.enumtype.ResourceCategory;
 import com.teamsamuelsagar.coworkingspace.model.enumtype.ResourceType;
+
 import lombok.Data;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
-
-
-
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 
 
-@Entity
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 @Table(name = "resource")
 public class Resource {
 
