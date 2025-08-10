@@ -17,7 +17,8 @@ import com.teamsamuelsagar.coworkingspace.model.enumtype.ReservationStatus;
 import com.teamsamuelsagar.coworkingspace.service.ReservationService;
 import com.teamsamuelsagar.coworkingspace.util.ConfirmationNumberGenerator;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,50 +33,45 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/reservation")
+@RequiredArgsConstructor
 public class ReservationController {
 
-    @Autowired
-    private ReservationService reservationService;
+    private final ReservationService reservationService;
+
+    private final UserService userService;
+
+    private final DeskRepository deskRepository;
+
+    private final DeskReservationRepository deskReservationRepository;
+
+    private final ResourceRepository resourceRepository;
     
-    @Autowired
-    private UserService userService;
+    private final ResourceReservationRepository resourceReservationRepository;
 
-    @Autowired
-    private DeskRepository deskRepository;
-
-    @Autowired
-    private DeskReservationRepository deskReservationRepository;
-
-    @Autowired
-    private ResourceRepository resourceRepository;
-    
-    @Autowired
-    private ResourceReservationRepository resourceReservationRepository;
-
-    @GetMapping("/reservation")
+    @GetMapping
     public ResponseEntity<List<Reservation>> findAllReservations() {
         List<Reservation> reservations = reservationService.getAllReservations();
 
         return ResponseEntity.ok(reservations);
     }
 
-    @GetMapping("/reservation/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Optional<Reservation>> findReservationById(@PathVariable String id) {
         return ResponseEntity.ok(reservationService.getReservationById(Long.parseLong(id)));
     }
 
-    @GetMapping("/reservation/confirmation/{confirmationNumber}")
+    @GetMapping("/confirmation/{confirmationNumber}")
     public ResponseEntity<Reservation> findReservationByConfirmationNumber(@PathVariable String confirmationNumber) {
         return ResponseEntity.ok(reservationService.getReservationByConfirmationNumber(confirmationNumber));
     }
 
-    @GetMapping("/reservation/user/{userId}")
+    @GetMapping("/user/{userId}")
     public ResponseEntity<List<Reservation>> findReservationByUserId(@PathVariable String userId) {
         return ResponseEntity.ok(reservationService.getReservationsByUserId(Long.parseLong(userId)));
     }
 
-    @PostMapping("/reservation")
+    @PostMapping
     public ResponseEntity<Reservation> createReservation(@RequestBody ReservationRequestDTO reservation) {
         Reservation newReservation = reservationService.createNewReservation(createReservationFromDTO(reservation));
 
