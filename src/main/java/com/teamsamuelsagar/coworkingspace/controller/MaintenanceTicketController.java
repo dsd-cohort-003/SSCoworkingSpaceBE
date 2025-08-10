@@ -6,7 +6,6 @@ import com.teamsamuelsagar.coworkingspace.service.MaintenanceTicketService;
 
 import lombok.RequiredArgsConstructor;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +23,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MaintenanceTicketController {
 
-    @Autowired
     private final MaintenanceTicketService ticketService;
 
     @GetMapping
