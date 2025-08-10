@@ -1,10 +1,10 @@
 package com.teamsamuelsagar.coworkingspace.model;
 
-
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.teamsamuelsagar.coworkingspace.model.enumtype.ReservationStatus;
+
 import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,6 +32,10 @@ public class Reservation {
     private LocalDateTime createdAt;
 
     private String confirmationNumber;
+
+    private Boolean isPrivate;
+
+    private String description;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
