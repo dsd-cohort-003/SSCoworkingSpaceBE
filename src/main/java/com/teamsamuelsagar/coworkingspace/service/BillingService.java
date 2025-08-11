@@ -12,8 +12,10 @@ import com.teamsamuelsagar.coworkingspace.model.ResourceReservation;
 import com.teamsamuelsagar.coworkingspace.model.User;
 import com.teamsamuelsagar.coworkingspace.repository.BillingRepository;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -51,6 +53,16 @@ public class BillingService {
         return billingRepository.findByUserAndIsPaidFalse(user);
     }
 
+    public List<Billing> getBillingByAuthUserId(UUID authUserId) {
+        User user = userService.getUserByAuthUserId(authUserId);
+        return billingRepository.findByUserAndIsPaidFalse(user);
+    }
+
+    public List<Billing> getUnpaidBillingByAuthUserId(UUID authUserId) {
+        User user = userService.getUserByAuthUserId(authUserId);
+        return billingRepository.findByUserAndIsPaidFalse(user);
+    }
+
     public String processPayment(Long billingId) {
         // Stub logic – payment gateway can be added here later
         Billing bill = billingRepository.findById(billingId)
@@ -70,15 +82,22 @@ public class BillingService {
         Reservation reservation = reservationService.getReservationById(reservationId).orElseThrow();
         // Get price for desk reservation
         DeskReservation deskReservation = reservation.getDeskReservation();
-        double deskHours = Duration.between(deskReservation.getStartDate(), deskReservation.getEndDate()).toHours();
+        double deskHours = Duration.between(
+            deskReservation.getStartDate().atStartOfDay(),
+            deskReservation.getEndDate().atStartOfDay()
+        ).toHours();
+        
         double deskRate = deskReservation.getDesk().getPrice();
         double deskBill = deskHours * deskRate;
 
         // Get price for resource reservation
-        List<ResourceReservation> resourceReservations = reservation.getResourceReservation();
+        List<ResourceReservation> resourceReservations = reservation.getResourceReservations();
         double resourceBill = 0.0;
         for (ResourceReservation resourceReservation : resourceReservations) {
-            double resourceHours = Duration.between(resourceReservation.getStartDate(), resourceReservation.getEndDate()).toHours();
+            double resourceHours = Duration.between(
+                resourceReservation.getStartDate().atStartOfDay(),
+                resourceReservation.getEndDate().atStartOfDay()
+            ).toHours();
             double resourceRate = resourceReservation.getResource().getPrice();
             resourceBill += (resourceHours * resourceRate);
         }
@@ -87,7 +106,7 @@ public class BillingService {
         Billing bill = new Billing();
         bill.setReservation(reservation);
         bill.setUser(reservation.getUser());
-        bill.setTotal((float) (deskBill * resourceBill));
+        bill.setTotal((float) (deskBill + resourceBill));
         bill.setIsPaid(false);
 
         return billingRepository.save(bill);

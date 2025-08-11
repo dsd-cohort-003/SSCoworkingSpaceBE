@@ -73,43 +73,32 @@ public class ReservationController {
 
     @PostMapping
     public ResponseEntity<Reservation> createReservation(@RequestBody ReservationRequestDTO reservation) {
-        Reservation newReservation = reservationService.createNewReservation(createReservationFromDTO(reservation));
+        Reservation newReservation = reservationService.createReservationFromDTO(reservation);
 
-        Desk newDesk = deskRepository.findById(reservation.getDeskId()).get();
-        DeskReservation deskReservation = new DeskReservation();
-        deskReservation.setDesk(newDesk);
-        deskReservation.setReservation(newReservation);
-        deskReservation.setStartDate(LocalDate.parse(reservation.getStartDate()));
-        deskReservation.setEndDate(LocalDate.parse(reservation.getEndDate()));
-        deskReservation.setStatus(String.valueOf(ReservationStatus.APPROVED));
-        deskReservationRepository.save(deskReservation);
+        // Desk newDesk = deskRepository.findById(reservation.getDeskId()).get();
+        // DeskReservation deskReservation = new DeskReservation();
+        // deskReservation.setDesk(newDesk);
+        // deskReservation.setReservation(newReservation);
+        // deskReservation.setStartDate(LocalDate.parse(reservation.getStartDate()));
+        // deskReservation.setEndDate(LocalDate.parse(reservation.getEndDate()));
+        // deskReservation.setStatus(String.valueOf(ReservationStatus.APPROVED));
+        // deskReservationRepository.save(deskReservation);
 
 
-        reservation.getResourceIds().forEach(id -> {
-            ResourceReservation resourceReservation = new ResourceReservation();
-            Optional<Resource> resource = resourceRepository.findById(id);
-            resource.ifPresent(resourceReservation::setResource);
-            resourceReservation.setReservation(newReservation);
-            resourceReservation.setStartDate(LocalDate.parse(reservation.getStartDate()));
-            resourceReservation.setEndDate(LocalDate.parse(reservation.getEndDate()));
-            resourceReservation.setStatus(ReservationStatus.APPROVED);
+        // reservation.getResourceIds().forEach(id -> {
+        //     ResourceReservation resourceReservation = new ResourceReservation();
+        //     Optional<Resource> resource = resourceRepository.findById(id);
+        //     resource.ifPresent(resourceReservation::setResource);
+        //     resourceReservation.setReservation(newReservation);
+        //     resourceReservation.setStartDate(LocalDate.parse(reservation.getStartDate()));
+        //     resourceReservation.setEndDate(LocalDate.parse(reservation.getEndDate()));
+        //     resourceReservation.setStatus(ReservationStatus.APPROVED);
 
-            resourceReservationRepository.save(resourceReservation);
-        });
+        //     resourceReservationRepository.save(resourceReservation);
+        // });
 
         return ResponseEntity.ok(newReservation);
     }
 
-    Reservation createReservationFromDTO(ReservationRequestDTO reservationRequestDTO) {
-        Reservation newReservation = new Reservation();
-        User user = userService.getUserByUsername(reservationRequestDTO.getUsername());
 
-        newReservation.setTotalPrice(reservationRequestDTO.getTotalPrice());
-        newReservation.setUser(user);
-        newReservation.setCreatedAt(LocalDateTime.now());
-        newReservation.setConfirmationNumber(ConfirmationNumberGenerator.generateConfirmationNumber(10));
-        newReservation.setReservationStatus(ReservationStatus.APPROVED);
-
-        return newReservation;
-    }
 }

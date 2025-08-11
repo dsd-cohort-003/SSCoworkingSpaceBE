@@ -3,6 +3,7 @@ package com.teamsamuelsagar.coworkingspace.model;
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.teamsamuelsagar.coworkingspace.dto.ResourceReservationDTO;
 import com.teamsamuelsagar.coworkingspace.model.enumtype.ReservationStatus;
 
 import jakarta.persistence.*;
@@ -19,6 +20,8 @@ import lombok.NoArgsConstructor;
 public class ResourceReservation {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private Integer quantity;
 
     @ManyToOne
     @JoinColumn(name = "resource_id")
