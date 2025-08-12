@@ -1,5 +1,7 @@
 package com.teamsamuelsagar.coworkingspace.dto;
 
+import java.util.UUID;
+
 import com.teamsamuelsagar.coworkingspace.model.MaintenanceTicket;
 import com.teamsamuelsagar.coworkingspace.model.User;
 
@@ -12,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MaintenanceTicketDTO {
-    private Long userId;
+    private UUID userId;
     private String title;
     private String category;
     private String location;

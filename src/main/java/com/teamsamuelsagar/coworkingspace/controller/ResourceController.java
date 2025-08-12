@@ -21,7 +21,7 @@ import com.teamsamuelsagar.coworkingspace.dto.ResourceDTO;
 import com.teamsamuelsagar.coworkingspace.dto.RetrieveResourceRequest;
 
 @RestController
-@RequestMapping("/api/resources")
+@RequestMapping("/api/resource")
 @RequiredArgsConstructor
 public class ResourceController {
 
@@ -29,6 +29,11 @@ public class ResourceController {
     private final ResourceService resourceService;
 
     @GetMapping
+    public List<Resource> getAllResources() {
+        return resourceService.getAll();
+    }
+
+    @GetMapping("/office")
     public List<ResourceDTO> getAllResources(@RequestBody RetrieveResourceRequest request) {
         return resourceService.getResourcesByOfficeId(request.getOfficeId(), request.getStartDate(), request.getEndDate());
     }

@@ -26,6 +26,10 @@ public class ResourceService {
     @Autowired
     private ResourceReservationService resourceReservationService;
 
+    public List<Resource> getAll() {
+        return resourceRepository.findAll();
+    }
+
     public Resource getResourceById(long id) {
         return resourceRepository.findById(id)
             .orElseThrow(() -> new EntityNotFoundException("Resource not found with id: " + id));

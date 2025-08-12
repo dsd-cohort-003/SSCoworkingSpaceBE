@@ -28,6 +28,7 @@ public class Resource {
     @Column(name = "id")
     protected Long id;
 
+    // Should be ManyToOne on office entity
     @Column(name = "office_id")
     protected Long officeId;
 
