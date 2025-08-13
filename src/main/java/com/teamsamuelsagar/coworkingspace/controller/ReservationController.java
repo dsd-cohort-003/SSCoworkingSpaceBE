@@ -87,8 +87,8 @@ public class ReservationController {
 
         reservation.getResourceIds().forEach(id -> {
             ResourceReservation resourceReservation = new ResourceReservation();
-            Optional<Resource> resource = resourceRepository.findById(id);
-            resource.ifPresent(resourceReservation::setResource);
+            Resource resource = resourceRepository.getById(id);
+            resourceReservation.setResource(resource);
             resourceReservation.setReservation(newReservation);
             resourceReservation.setStartDate(LocalDate.parse(reservation.getStartDate()));
             resourceReservation.setEndDate(LocalDate.parse(reservation.getEndDate()));

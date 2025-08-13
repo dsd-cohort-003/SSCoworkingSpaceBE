@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "app_user")   // Changed table name to avoid conflict with reserved keyword
+@Table(name = "users")   // Changed table name to avoid conflict with reserved keyword
 public class User {
 
     @Id
