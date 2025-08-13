@@ -28,7 +28,7 @@ public class ResourceController {
 
     private final ResourceService resourceService;
 
-    @GetMapping
+    @PostMapping
     public List<ResourceDTO> getAllResources(@RequestBody RetrieveResourceRequest request) {
         return resourceService.getResourcesByOfficeId(request.getOfficeId(), request.getStartDate(), request.getEndDate());
     }
