@@ -95,6 +95,8 @@ public class ReservationService {
         newReservation.setCreatedAt(LocalDateTime.now());
         newReservation.setConfirmationNumber(ConfirmationNumberGenerator.generateConfirmationNumber(10));
         newReservation.setReservationStatus(ReservationStatus.APPROVED);
+        newReservation.setIsPrivate(reservationRequestDTO.getIsPrivate());
+        newReservation.setDescription(reservationRequestDTO.getDescription());
 
         return createNewReservation(newReservation);
     }
