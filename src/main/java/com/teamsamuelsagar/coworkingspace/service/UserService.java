@@ -2,6 +2,7 @@ package com.teamsamuelsagar.coworkingspace.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,11 @@ public class UserService {
     public User getUserById(Long id) {
         return userRepository.findById(id)
             .orElseThrow(() -> new IllegalArgumentException("User not found"));
+    }
+
+    public User getUserByAuthUserId(UUID authUserId) {
+        return userRepository.findByAuthUserId(authUserId)
+                .orElseThrow(() -> new IllegalArgumentException("User not found with UUID: " + authUserId));
     }
 
     public User createUser(UserDTO dto) {

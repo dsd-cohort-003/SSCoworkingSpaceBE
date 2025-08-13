@@ -1,6 +1,7 @@
 package com.teamsamuelsagar.coworkingspace.repository;
 
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -12,4 +13,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     public User findByUsername(String username);
 
     public Optional<User> findById(Long id);
+
+    public Optional<User> findByAuthUserId(UUID authUserId);
 }
