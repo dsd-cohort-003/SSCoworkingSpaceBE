@@ -1,6 +1,7 @@
 package com.teamsamuelsagar.coworkingspace.service;
 
 import com.teamsamuelsagar.coworkingspace.dto.DeskReservationDTO;
+import com.teamsamuelsagar.coworkingspace.dto.ReservationDTO;
 import com.teamsamuelsagar.coworkingspace.dto.ReservationRequestDTO;
 import com.teamsamuelsagar.coworkingspace.dto.ResourceReservationDTO;
 import com.teamsamuelsagar.coworkingspace.model.DeskReservation;
@@ -106,6 +107,27 @@ public class ReservationService {
         User foundUser = userService.getUserByAuthUserId(authUserId);
 
         return getReservationsByUserId(foundUser.getId());
+    }
+
+    public ReservationDTO createReservationDTOFromReservation(Reservation reservation) {
+        ReservationDTO reservationDTO = new ReservationDTO();
+        DeskReservation deskReservation = deskReservationService.findByReservationId(reservation.getId());
+
+        reservationDTO.setId(reservation.getId());
+        reservationDTO.setUser(reservation.getUser());
+        reservationDTO.setDescription(reservation.getDescription());
+        reservationDTO.setTotalPrice(reservation.getTotalPrice());
+        reservationDTO.setConfirmationNumber(reservation.getConfirmationNumber());
+        reservationDTO.setPrivate(reservation.getIsPrivate());
+        reservationDTO.setReservationStatus(reservation.getReservationStatus());
+        reservationDTO.setCreatedAt(reservation.getCreatedAt());
+
+        if(deskReservation != null) {
+            reservationDTO.setStartDate(deskReservation.getStartDate());
+            reservationDTO.setEndDate(deskReservation.getEndDate());
+        }
+
+        return reservationDTO;
     }
     
 }

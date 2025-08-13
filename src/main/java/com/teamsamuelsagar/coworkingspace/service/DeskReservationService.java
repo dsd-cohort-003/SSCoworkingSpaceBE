@@ -20,6 +20,10 @@ public class DeskReservationService {
         return deskReservationRepository.findAll();
     }
 
+    public DeskReservation findByReservationId(Long reservationId) {
+        return deskReservationRepository.findByReservationId(reservationId);
+    }
+
     public List<DeskReservation> findCurrentReservations() {
         return deskReservationRepository.findCurrentReservations(LocalDate.now());
     }
