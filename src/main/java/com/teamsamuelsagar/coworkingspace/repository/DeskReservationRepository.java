@@ -13,4 +13,5 @@ public interface DeskReservationRepository extends JpaRepository<DeskReservation
     @Query("SELECT dr FROM DeskReservation dr WHERE dr.startDate <= :today ")
     public List<DeskReservation> findCurrentReservations(@Param("today") LocalDate today);
 
+    DeskReservation findByReservationId(Long id);
 }

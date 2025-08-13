@@ -20,6 +20,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -100,4 +101,11 @@ public class ReservationService {
 
         return createNewReservation(newReservation);
     }
+    
+    public List<Reservation> getReservationsByUUID(UUID authUserId) {
+        User foundUser = userService.getUserByAuthUserId(authUserId);
+
+        return getReservationsByUserId(foundUser.getId());
+    }
+    
 }
