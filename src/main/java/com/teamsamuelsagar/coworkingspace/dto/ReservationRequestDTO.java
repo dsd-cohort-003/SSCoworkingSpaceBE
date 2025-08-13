@@ -7,22 +7,20 @@ import lombok.AllArgsConstructor;
 import java.math.BigDecimal;
 
 import java.util.List;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class ReservationRequestDTO {
-    private String username;
+    // private String username;
+    // private Long userId;
+    private UUID authUserId;
 
     private BigDecimal totalPrice;
 
-    private Long deskId;
-
-    private String startDate;
-
-    private String endDate;
-
-    private List<Long> resourceIds;
+    private DeskReservationDTO deskReservation;
+    private List<ResourceReservationDTO> resourceReservations;
 
     private Boolean isPrivate;
 

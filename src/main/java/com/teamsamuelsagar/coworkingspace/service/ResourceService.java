@@ -15,6 +15,8 @@ import com.teamsamuelsagar.coworkingspace.model.Resource;
 import com.teamsamuelsagar.coworkingspace.dto.ResourceDTO;
 import com.teamsamuelsagar.coworkingspace.repository.ResourceRepository;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class ResourceService {
 
@@ -23,6 +25,15 @@ public class ResourceService {
 
     @Autowired
     private ResourceReservationService resourceReservationService;
+
+    public List<Resource> getAll() {
+        return resourceRepository.findAll();
+    }
+
+    public Resource getResourceById(long id) {
+        return resourceRepository.findById(id)
+            .orElseThrow(() -> new EntityNotFoundException("Resource not found with id: " + id));
+    }
 
     public ResourceDTO getResourceById(long officeId, LocalDate startDate, LocalDate endDate, long id) {
             return toDTO(resourceRepository.findByIdAndOfficeId(id, officeId), startDate, endDate);

@@ -14,6 +14,7 @@ import com.teamsamuelsagar.coworkingspace.model.Billing;
 import com.teamsamuelsagar.coworkingspace.service.BillingService;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/billing")
@@ -33,6 +34,7 @@ public class BillingController {
         return ResponseEntity.ok(billingService.getBillingById(billingId));
     }
 
+    // Number Userid
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<Billing>> getBillingByUser(@PathVariable Long userId) {
         return ResponseEntity.ok(billingService.getBillingByUserId(userId));
@@ -42,6 +44,18 @@ public class BillingController {
     public ResponseEntity<List<Billing>> getUnpaidBilling(@PathVariable Long userId) {
         return ResponseEntity.ok(billingService.getUnpaidBillingByUserId(userId));
     }
+    /// UUID
+    @GetMapping("/user/auth/{authUserId}")
+    public ResponseEntity<List<Billing>> getBillingByUserByUUID(@PathVariable UUID authUserId) {
+        return ResponseEntity.ok(billingService.getBillingByAuthUserId(authUserId));
+    }
+
+    @GetMapping("/user/auth/{authUserId}/unpaid")
+    public ResponseEntity<List<Billing>> getUnpaidBillingByUserByUUID(@PathVariable UUID authUserId) {
+        return ResponseEntity.ok(billingService.getUnpaidBillingByAuthUserId(authUserId));
+    }
+
+    //===============================================
 
     // Does nothing currently until payment processing is implemented
     @PostMapping("/pay/{billingId}/process")
@@ -54,10 +68,10 @@ public class BillingController {
         return ResponseEntity.ok(billingService.confirmPayment(billingId));
     }
 
-//     @PostMapping("/generate/{reservationId}")
-//     public ResponseEntity<Billing> generateBill(@PathVariable Long reservationId) {
-//         return ResponseEntity.ok(billingService.generateBill(reservationId));
-//     }
+    @PostMapping("/generate/{reservationId}")
+    public ResponseEntity<Billing> generateBill(@PathVariable Long reservationId) {
+        return ResponseEntity.ok(billingService.generateBill(reservationId));
+    }
 }
 
 

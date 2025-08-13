@@ -26,10 +26,11 @@ public class Resource {
 
     @Id
     @Column(name = "id")
-    protected long id;
+    protected Long id;
 
+    // Should be ManyToOne on office entity
     @Column(name = "office_id")
-    protected long officeId;
+    protected Long officeId;
 
     @Column(name = "category")
     @Enumerated(EnumType.STRING)

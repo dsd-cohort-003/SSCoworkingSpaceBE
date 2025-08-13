@@ -45,13 +45,13 @@ public class DeskController {
         return ResponseEntity.ok(deskService.createDesk(request));
     }
 
-    @PostMapping(value = "office/{officeId}")
+    @PostMapping(value = "/office/{officeId}")
     public ResponseEntity<List<Desk>> getDesksForOffice(@PathVariable Long officeId, @RequestBody RetrieveDesksRequest request) {
         return ResponseEntity.ok(deskService.getDesksForOffice(request, officeId));
     }
 
 
-    @DeleteMapping(value = "{deskId}") 
+    @DeleteMapping(value = "/{deskId}") 
     public ResponseEntity<Void> deleteDesk(@PathVariable long deskId) {
         deskService.deleteDesk(deskId);
         return ResponseEntity.noContent().build();

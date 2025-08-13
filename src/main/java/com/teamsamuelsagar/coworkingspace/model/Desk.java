@@ -20,6 +20,8 @@ public class Desk {
     private Long id;
     private String description;
     private Float basePrice;
+    private Float price;
+
 
     @ManyToOne
     private Office office;

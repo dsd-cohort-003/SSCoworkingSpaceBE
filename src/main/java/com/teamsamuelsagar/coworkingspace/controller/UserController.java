@@ -1,6 +1,7 @@
 package com.teamsamuelsagar.coworkingspace.controller;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -33,6 +34,11 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
         return ResponseEntity.ok(userService.getUserById(id));
+    }
+
+    @GetMapping("/auth/{authUserId}")
+    public ResponseEntity<User> getUserByUuid(@PathVariable UUID authUserId) {
+        return ResponseEntity.ok(userService.getUserByAuthUserId(authUserId));
     }
 
     @PostMapping

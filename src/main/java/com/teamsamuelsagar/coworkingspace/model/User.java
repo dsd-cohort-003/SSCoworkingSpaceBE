@@ -1,6 +1,7 @@
 package com.teamsamuelsagar.coworkingspace.model;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "app_user")   // Changed table name to avoid conflict with reserved keyword
+@Table(name = "users")
 public class User {
 
     @Id
@@ -31,5 +32,8 @@ public class User {
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
+
+    @Column(name = "user_id")   // tied to supabase's auth.users.id
+    private UUID authUserId;
     
 }

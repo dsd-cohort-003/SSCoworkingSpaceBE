@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/maintenance")
@@ -46,6 +47,17 @@ public class MaintenanceTicketController {
     public List<MaintenanceTicket> getUnresolvedTicketsByUser(@PathVariable Long userId) {
         return ticketService.getUnresolvedTicketsByUser(userId);
     }
+
+    @GetMapping("/user/auth/{userId}")
+    public List<MaintenanceTicket> getTicketsByAuthUserId(@PathVariable UUID userId) {
+        return ticketService.getTicketsByAuthUserId(userId);
+    }
+
+    @GetMapping("/user/auth/{userId}/unresolved")
+    public List<MaintenanceTicket> getUnresolvedTicketsByAuthUserId(@PathVariable UUID userId) {
+        return ticketService.getUnresolvedTicketsByAuthUserId(userId);
+    }
+
 
     @PostMapping
     public MaintenanceTicket createTicket(@RequestBody MaintenanceTicketDTO ticketDto) {

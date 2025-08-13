@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -35,12 +36,22 @@ public class MaintenanceTicketService {
         return ticketRepository.findByUserIdAndStatusNot(userId, "resolved");
     }
 
+    public List<MaintenanceTicket> getTicketsByAuthUserId(UUID authUserId) {
+        User user = userService.getUserByAuthUserId(authUserId);
+        return ticketRepository.findByUserId(user.getId());
+    }
+
+    public List<MaintenanceTicket> getUnresolvedTicketsByAuthUserId(UUID authUserId) {
+        User user = userService.getUserByAuthUserId(authUserId);
+        return ticketRepository.findByUserIdAndStatusNot(user.getId(), "resolved");
+    }
+
     public MaintenanceTicket createTicket(MaintenanceTicket ticket) {
         return ticketRepository.save(ticket);
     }
 
-    public MaintenanceTicket createTicket(MaintenanceTicketDTO dto, Long userId) {
-        User user = userService.getUserById(userId);
+    public MaintenanceTicket createTicket(MaintenanceTicketDTO dto, UUID userId) {
+        User user = userService.getUserByAuthUserId(userId);
         
         if (dto.getStatus() == null || dto.getStatus().isBlank()) {
             dto.setStatus("open");
