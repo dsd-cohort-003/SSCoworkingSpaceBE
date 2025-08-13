@@ -2,21 +2,8 @@ package com.teamsamuelsagar.coworkingspace.controller;
 
 import com.teamsamuelsagar.coworkingspace.dto.ReservationRequestDTO;
 
-import com.teamsamuelsagar.coworkingspace.model.Desk;
-import com.teamsamuelsagar.coworkingspace.model.DeskReservation;
-import com.teamsamuelsagar.coworkingspace.repository.DeskRepository;
-import com.teamsamuelsagar.coworkingspace.repository.DeskReservationRepository;
-import com.teamsamuelsagar.coworkingspace.model.Resource;
-import com.teamsamuelsagar.coworkingspace.model.ResourceReservation;
-import com.teamsamuelsagar.coworkingspace.repository.ResourceRepository;
-import com.teamsamuelsagar.coworkingspace.repository.ResourceReservationRepository;
-import com.teamsamuelsagar.coworkingspace.model.User;
-import com.teamsamuelsagar.coworkingspace.service.UserService;
 import com.teamsamuelsagar.coworkingspace.model.Reservation;
-import com.teamsamuelsagar.coworkingspace.model.enumtype.ReservationStatus;
 import com.teamsamuelsagar.coworkingspace.service.ReservationService;
-import com.teamsamuelsagar.coworkingspace.util.ConfirmationNumberGenerator;
-
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.ResponseEntity;
@@ -27,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,16 +23,6 @@ import java.util.Optional;
 public class ReservationController {
 
     private final ReservationService reservationService;
-
-    private final UserService userService;
-
-    private final DeskRepository deskRepository;
-
-    private final DeskReservationRepository deskReservationRepository;
-
-    private final ResourceRepository resourceRepository;
-    
-    private final ResourceReservationRepository resourceReservationRepository;
 
     @GetMapping
     public ResponseEntity<List<Reservation>> findAllReservations() {
@@ -74,28 +49,6 @@ public class ReservationController {
     @PostMapping
     public ResponseEntity<Reservation> createReservation(@RequestBody ReservationRequestDTO reservation) {
         Reservation newReservation = reservationService.createReservationFromDTO(reservation);
-
-        // Desk newDesk = deskRepository.findById(reservation.getDeskId()).get();
-        // DeskReservation deskReservation = new DeskReservation();
-        // deskReservation.setDesk(newDesk);
-        // deskReservation.setReservation(newReservation);
-        // deskReservation.setStartDate(LocalDate.parse(reservation.getStartDate()));
-        // deskReservation.setEndDate(LocalDate.parse(reservation.getEndDate()));
-        // deskReservation.setStatus(String.valueOf(ReservationStatus.APPROVED));
-        // deskReservationRepository.save(deskReservation);
-
-
-        // reservation.getResourceIds().forEach(id -> {
-        //     ResourceReservation resourceReservation = new ResourceReservation();
-        //     Optional<Resource> resource = resourceRepository.findById(id);
-        //     resource.ifPresent(resourceReservation::setResource);
-        //     resourceReservation.setReservation(newReservation);
-        //     resourceReservation.setStartDate(LocalDate.parse(reservation.getStartDate()));
-        //     resourceReservation.setEndDate(LocalDate.parse(reservation.getEndDate()));
-        //     resourceReservation.setStatus(ReservationStatus.APPROVED);
-
-        //     resourceReservationRepository.save(resourceReservation);
-        // });
 
         return ResponseEntity.ok(newReservation);
     }

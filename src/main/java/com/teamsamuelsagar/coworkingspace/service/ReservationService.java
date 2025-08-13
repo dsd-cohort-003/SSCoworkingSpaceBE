@@ -12,8 +12,6 @@ import com.teamsamuelsagar.coworkingspace.model.enumtype.ReservationStatus;
 import com.teamsamuelsagar.coworkingspace.repository.ReservationRepository;
 import com.teamsamuelsagar.coworkingspace.util.ConfirmationNumberGenerator;
 
-import jakarta.persistence.EntityNotFoundException;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Service;
@@ -69,7 +67,6 @@ public class ReservationService {
             Resource resource = resourceService.getResourceById(rrDto.getId());
             ResourceReservation resourceReservation = new ResourceReservation();
             resourceReservation.setResource(resource);
-            resourceReservation.setQuantity(rrDto.getQuantity());
             resourceReservation.setReservation(newReservation);
             resourceReservation.setStartDate(rrDto.getStartDate());
             resourceReservation.setEndDate(rrDto.getEndDate());

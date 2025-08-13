@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ResourceReservationDTO {
     private Long id;
-    private Integer quantity;
     private LocalDate startDate;
     private LocalDate endDate;
 }
