@@ -31,6 +31,11 @@ public class ReservationController {
         return ResponseEntity.ok(reservations);
     }
 
+    @GetMapping("/public")
+    public ResponseEntity<List<Reservation>> findPublicReservations() {
+        return ResponseEntity.ok(reservationService.getAllPublicReservations());
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Reservation>> findReservationById(@PathVariable String id) {
         return ResponseEntity.ok(reservationService.getReservationById(Long.parseLong(id)));

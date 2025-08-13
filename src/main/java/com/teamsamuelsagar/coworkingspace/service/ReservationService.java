@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -28,9 +29,25 @@ public class ReservationService {
     private final DeskService deskService;
     private final ResourceService resourceService;
     private final ReservationRepository reservationRepository;
+    private final DeskReservationService deskReservationService;
 
     public List<Reservation> getAllReservations() {
         return reservationRepository.findAll();
+    }
+
+    /**
+     * Retrieves a list of all public reservations, i.e., reservations that are not private
+     * and have a start date that is today or later.
+     *
+     * @return a list of public reservations
+     */
+    public List<Reservation> getAllPublicReservations() {
+        List<DeskReservation> currentDeskReservations = deskReservationService.findCurrentReservations();
+        List<Reservation> reservations = currentDeskReservations.stream()
+                .map(DeskReservation::getReservation)
+                .filter(reservation -> !reservation.getIsPrivate())
+                .collect(Collectors.toList());
+        return reservations;
     }
 
     public Optional<Reservation> getReservationById(Long reservationId) {
@@ -78,6 +95,8 @@ public class ReservationService {
         newReservation.setCreatedAt(LocalDateTime.now());
         newReservation.setConfirmationNumber(ConfirmationNumberGenerator.generateConfirmationNumber(10));
         newReservation.setReservationStatus(ReservationStatus.APPROVED);
+        newReservation.setIsPrivate(reservationRequestDTO.getIsPrivate());
+        newReservation.setDescription(reservationRequestDTO.getDescription());
 
         return createNewReservation(newReservation);
     }
