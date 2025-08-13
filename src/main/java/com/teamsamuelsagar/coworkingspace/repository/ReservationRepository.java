@@ -7,11 +7,9 @@ import java.util.List;
 
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
 
-    public Reservation findByConfirmationNumber(String confirmationNumber);
+    Reservation findByConfirmationNumber(String confirmationNumber);
 
-    public List<Reservation> findAllReservationsByUserId(Long userId);
+    List<Reservation> findAllReservationsByUserId(Long userId);
 
-    public List<Reservation> findAll();
-
-    public List<Reservation> findByIsPrivate(Boolean isPrivate);
+    List<Reservation> findByIsPrivate(Boolean isPrivate);
 }
