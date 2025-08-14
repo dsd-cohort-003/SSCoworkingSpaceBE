@@ -36,9 +36,11 @@ public class ReservationController {
     }
     
     @GetMapping("/public")
-    public ResponseEntity<List<Reservation>> findPublicReservations() {
+    public ResponseEntity<List<ReservationDTO>> findPublicReservations() {
         return ResponseEntity.ok(
-            reservationService.getAllPublicReservations()
+            reservationService.getAllPublicReservations().stream()
+                .map(reservationService::createReservationDTOFromReservation)
+                .toList()
         );
     }
     
