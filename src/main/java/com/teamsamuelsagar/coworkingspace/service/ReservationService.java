@@ -47,8 +47,9 @@ public class ReservationService {
         List<DeskReservation> currentDeskReservations = deskReservationService.findCurrentReservations();
         List<Reservation> reservations = currentDeskReservations.stream()
                 .map(DeskReservation::getReservation)
-                .filter(reservation -> !reservation.getIsPrivate())
+                .filter(reservation ->  !Boolean.TRUE.equals(reservation.getIsPrivate()))
                 .collect(Collectors.toList());
+                System.out.println(reservations.size());
         return reservations;
     }
 
